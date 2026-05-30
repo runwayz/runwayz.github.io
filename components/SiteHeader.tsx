@@ -4,6 +4,25 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SERVE_GROUPS } from "@/lib/nav";
 
+function Logo() {
+  return (
+    <Link href="/" className="flex items-center" aria-label="Runwayz home">
+      {/* eslint-disable @next/next/no-img-element */}
+      <img
+        src="/brand/runwayz-logo-light.svg"
+        alt="Runwayz"
+        className="h-7 w-auto dark:hidden"
+      />
+      <img
+        src="/brand/runwayz-logo-dark.svg"
+        alt="Runwayz"
+        className="hidden h-7 w-auto dark:block"
+      />
+      {/* eslint-enable @next/next/no-img-element */}
+    </Link>
+  );
+}
+
 export function SiteHeader() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,21 +49,15 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-page/80 backdrop-blur">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="text-lg font-semibold tracking-tight"
-          onClick={() => setMobileOpen(false)}
-        >
-          Runwayz
-        </Link>
+        <Logo />
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex" ref={wrapRef}>
           <Link
             href="/talent"
-            className="rounded-md px-3 py-2 text-sm text-gray-700 hover:text-gray-900"
+            className="rounded-md px-3 py-2 text-sm text-fg2 hover:text-fg1"
           >
             Talent
           </Link>
@@ -56,7 +69,7 @@ export function SiteHeader() {
           >
             <button
               type="button"
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-gray-700 hover:text-gray-900"
+              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-fg2 hover:text-fg1"
               onClick={() => setMegaOpen((o) => !o)}
               aria-expanded={megaOpen}
             >
@@ -77,10 +90,10 @@ export function SiteHeader() {
 
             {megaOpen && (
               <div className="absolute left-1/2 top-full z-50 w-[34rem] -translate-x-1/2 pt-3">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-6 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl">
+                <div className="grid grid-cols-2 gap-x-8 gap-y-6 rounded-2xl border border-border bg-surface p-6 shadow-xl">
                   {SERVE_GROUPS.map((g) => (
                     <div key={g.heading}>
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-fg3">
                         {g.heading}
                       </p>
                       <ul className="space-y-1">
@@ -88,13 +101,13 @@ export function SiteHeader() {
                           <li key={it.href}>
                             <Link
                               href={it.href}
-                              className="block rounded-lg px-3 py-2 hover:bg-gray-50"
+                              className="block rounded-lg px-3 py-2 hover:bg-raised"
                               onClick={() => setMegaOpen(false)}
                             >
-                              <span className="block text-sm font-medium text-gray-900">
+                              <span className="block text-sm font-medium text-fg1">
                                 {it.label}
                               </span>
-                              <span className="block text-xs text-gray-500">
+                              <span className="block text-xs text-fg3">
                                 {it.desc}
                               </span>
                             </Link>
@@ -110,48 +123,50 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className="ml-2 rounded-full bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-700"
+            className="ml-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
             Get a demo
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          className="rounded-md p-2 text-gray-700 md:hidden"
-          onClick={() => setMobileOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="h-6 w-6"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+        {/* Mobile controls */}
+        <div className="flex items-center gap-1 md:hidden">
+          <button
+            type="button"
+            className="rounded-md p-2 text-fg2"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Toggle menu"
           >
-            <path
-              d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+            <svg
+              className="h-6 w-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile panel */}
       {mobileOpen && (
-        <div className="border-t border-gray-100 md:hidden">
+        <div className="border-t border-border md:hidden">
           <div className="space-y-4 px-6 py-4">
             <Link
               href="/talent"
-              className="block text-sm font-medium"
+              className="block text-sm font-medium text-fg1"
               onClick={() => setMobileOpen(false)}
             >
               Talent
             </Link>
             {SERVE_GROUPS.map((g) => (
               <div key={g.heading}>
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                <p className="text-xs font-semibold uppercase tracking-wider text-fg3">
                   {g.heading}
                 </p>
                 <ul className="mt-1 space-y-1">
@@ -159,7 +174,7 @@ export function SiteHeader() {
                     <li key={it.href}>
                       <Link
                         href={it.href}
-                        className="block py-1 text-sm text-gray-700"
+                        className="block py-1 text-sm text-fg2"
                         onClick={() => setMobileOpen(false)}
                       >
                         {it.label}
@@ -171,7 +186,7 @@ export function SiteHeader() {
             ))}
             <Link
               href="/contact"
-              className="block rounded-full bg-gray-900 px-4 py-2 text-center text-sm font-medium text-white"
+              className="block rounded-full bg-accent px-4 py-2 text-center text-sm font-medium text-accent-contrast"
               onClick={() => setMobileOpen(false)}
             >
               Get a demo

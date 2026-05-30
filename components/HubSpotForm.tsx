@@ -53,7 +53,7 @@ export function HubSpotForm({ formId, portalId, region = 'na1' }: Props) {
 
   if (!resolvedPortalId) {
     return (
-      <div className="rounded-lg border border-dashed border-gray-300 p-4 text-sm text-gray-500">
+      <div className="rounded-lg border border-dashed border-border p-4 text-sm text-fg3">
         HubSpot form <code>{formId}</code> — set <code>NEXT_PUBLIC_HUBSPOT_PORTAL_ID</code> to render it.
       </div>
     )

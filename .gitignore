@@ -47,3 +47,6 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# internal design source (posters copied into public/brand/vibe)
+resources_screenshots/

@@ -10,14 +10,14 @@ const components: PortableTextComponents = {
   block: {
     h2: ({ children }) => <h2 className="mt-12 text-2xl font-semibold tracking-tight">{children}</h2>,
     h3: ({ children }) => <h3 className="mt-8 text-xl font-semibold tracking-tight">{children}</h3>,
-    normal: ({ children }) => <p className="mt-5 leading-7 text-gray-700">{children}</p>,
+    normal: ({ children }) => <p className="mt-5 leading-7 text-fg2">{children}</p>,
     blockquote: ({ children }) => (
-      <blockquote className="mt-6 border-l-4 border-gray-900 pl-4 italic text-gray-800">{children}</blockquote>
+      <blockquote className="mt-6 border-l-4 border-accent pl-4 italic text-fg1">{children}</blockquote>
     ),
   },
   marks: {
     link: ({ children, value }) => (
-      <a href={value?.href} className="font-medium text-blue-600 underline underline-offset-2">
+      <a href={value?.href} className="font-medium text-accent underline underline-offset-2">
         {children}
       </a>
     ),
@@ -32,12 +32,12 @@ const components: PortableTextComponents = {
       />
     ),
     pullQuote: ({ value }) => (
-      <figure className="my-10 border-y border-gray-200 py-6">
-        <blockquote className="text-2xl font-medium leading-snug tracking-tight text-gray-900">
+      <figure className="my-10 border-y border-border py-6">
+        <blockquote className="text-2xl font-medium leading-snug tracking-tight text-fg1">
           “{value?.quote}”
         </blockquote>
         {value?.attribution && (
-          <figcaption className="mt-3 text-sm uppercase tracking-wide text-gray-500">
+          <figcaption className="mt-3 text-sm uppercase tracking-wide text-fg3">
             — {value.attribution}
           </figcaption>
         )}

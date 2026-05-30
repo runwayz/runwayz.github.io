@@ -23,7 +23,7 @@ export default async function BlogIndex() {
   return (
     <div>
       <h1 className="text-4xl font-semibold tracking-tight">Blog</h1>
-      <p className="mt-3 text-gray-600">News, ideas, and updates.</p>
+      <p className="mt-3 text-fg2">News, ideas, and updates.</p>
 
       {posts.length === 0 ? (
         <EmptyState />
@@ -42,8 +42,8 @@ export default async function BlogIndex() {
               <h2 className="mt-4 text-xl font-semibold tracking-tight group-hover:underline">
                 {post.title}
               </h2>
-              {post.excerpt && <p className="mt-2 text-sm text-gray-600">{post.excerpt}</p>}
-              <p className="mt-3 text-xs uppercase tracking-wide text-gray-400">
+              {post.excerpt && <p className="mt-2 text-sm text-fg2">{post.excerpt}</p>}
+              <p className="mt-3 text-xs uppercase tracking-wide text-fg3">
                 {post.authorName ? `${post.authorName} · ` : ""}
                 {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
               </p>
@@ -57,7 +57,7 @@ export default async function BlogIndex() {
 
 function EmptyState() {
   return (
-    <div className="mt-10 rounded-xl border border-dashed border-gray-300 p-10 text-center text-gray-500">
+    <div className="mt-10 rounded-xl border border-dashed border-border p-10 text-center text-fg3">
       No posts yet. Add one in{" "}
       <Link href="/studio" className="underline">
         Sanity Studio

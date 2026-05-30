@@ -33,7 +33,7 @@ export default async function CaseStudyPage({
 
   return (
     <article>
-      <header className="border-b border-gray-100 pb-10">
+      <header className="border-b border-border pb-10">
         {study.logo && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -42,16 +42,16 @@ export default async function CaseStudyPage({
             className="h-12 object-contain"
           />
         )}
-        <p className="mt-6 text-sm uppercase tracking-widest text-gray-400">{study.client}</p>
+        <p className="mt-6 text-sm uppercase tracking-widest text-fg3">{study.client}</p>
         <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight">{study.title}</h1>
-        {study.summary && <p className="mt-4 max-w-2xl text-lg text-gray-600">{study.summary}</p>}
+        {study.summary && <p className="mt-4 max-w-2xl text-lg text-fg2">{study.summary}</p>}
 
         {study.metrics && study.metrics.length > 0 && (
           <dl className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
             {study.metrics.map((m, i) => (
               <div key={i}>
                 <dt className="text-3xl font-semibold tracking-tight">{m.value}</dt>
-                <dd className="mt-1 text-xs uppercase tracking-wide text-gray-400">{m.label}</dd>
+                <dd className="mt-1 text-xs uppercase tracking-wide text-fg3">{m.label}</dd>
               </div>
             ))}
           </dl>

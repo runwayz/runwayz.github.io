@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Enable class-based dark mode (toggled on <html>) in addition to the CSS-var
+   swap below. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Light mode (default) — from Runwayz Art Deco v2 tokens ----
+   `.light` lets us force light tokens inside a dark page (used for the
+   side-by-side previews in the style guide). */
+:root,
+.light {
+  color-scheme: light;
+
+  --bg-page: #faf4e6; /* product cream */
+  --bg-surface: #ffffff;
+  --bg-raised: #fffbf0; /* cream-light */
+  --bg-hero: #f5ecd7; /* hero cream (marketing) */
+  --bg-sunken: #e8dcbf;
+  --border: #dde0e7; /* charcoal-200 */
+
+  --fg1: #1f2430; /* charcoal-900 — body */
+  --fg2: #4a5264; /* charcoal-600 — secondary */
+  --fg3: #6e7688; /* charcoal-500 — tertiary */
+  --fg-placeholder: #7a8294; /* charcoal-400 */
+
+  --accent: #14609f; /* blue-700 — interactive */
+  --accent-contrast: #ffffff; /* text on accent */
+  --accent-decorative: #1e88d6; /* blue-500 — decorative only */
+
+  --success: #1f6c52; /* jade-dark */
+  --warning: #a86a10; /* tangerine-dark */
+  --danger: #b63a2a; /* brick */
 }
 
+/* ---- Dark mode — full semantic inversion, anchored on midnight ---- */
+.dark {
+  color-scheme: dark;
+
+  --bg-page: #141a28; /* midnight */
+  --bg-surface: #1b2232; /* midnight-800 */
+  --bg-raised: #272d3c; /* charcoal-800 */
+  --bg-hero: #0c1018; /* midnight-900 (sunken) */
+  --bg-sunken: #0c1018;
+  --border: #272d3c; /* charcoal-800 */
+
+  --fg1: #f5ecd7; /* cream — preserves brand, not white */
+  --fg2: #dde0e7; /* charcoal-200 */
+  --fg3: #7a8294; /* charcoal-400 */
+  --fg-placeholder: #6e7688; /* charcoal-500 */
+
+  --accent: #7db8e4; /* blue-200 */
+  --accent-contrast: #141a28; /* midnight text on light-blue */
+  --accent-decorative: #1e88d6;
+
+  --success: #5cb394; /* jade-light */
+  --warning: #f4a02c; /* tangerine */
+  --danger: #e87666; /* brick-light */
+}
+
+/* Map tokens to Tailwind color/font utilities (bg-page, text-fg1, border-border,
+   text-accent, etc.) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-page: var(--bg-page);
+  --color-surface: var(--bg-surface);
+  --color-raised: var(--bg-raised);
+  --color-hero: var(--bg-hero);
+  --color-sunken: var(--bg-sunken);
+  --color-border: var(--border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-fg1: var(--fg1);
+  --color-fg2: var(--fg2);
+  --color-fg3: var(--fg3);
+  --color-fg-placeholder: var(--fg-placeholder);
+
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-decorative: var(--accent-decorative);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-cabin);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-page);
+  color: var(--fg1);
+  font-family: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
 }

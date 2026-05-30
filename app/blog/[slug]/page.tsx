@@ -34,12 +34,12 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-2xl">
-      <p className="text-xs uppercase tracking-wide text-gray-400">
+      <p className="text-xs uppercase tracking-wide text-fg3">
         {post.author?.name ? `${post.author.name} · ` : ""}
         {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
       </p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight">{post.title}</h1>
-      {post.excerpt && <p className="mt-4 text-lg text-gray-600">{post.excerpt}</p>}
+      {post.excerpt && <p className="mt-4 text-lg text-fg2">{post.excerpt}</p>}
 
       {post.coverImage && (
         // eslint-disable-next-line @next/next/no-img-element

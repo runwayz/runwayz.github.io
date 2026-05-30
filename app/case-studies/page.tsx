@@ -23,10 +23,10 @@ export default async function CaseStudiesIndex() {
   return (
     <div>
       <h1 className="text-4xl font-semibold tracking-tight">Case Studies</h1>
-      <p className="mt-3 text-gray-600">How teams win with us.</p>
+      <p className="mt-3 text-fg2">How teams win with us.</p>
 
       {studies.length === 0 ? (
-        <div className="mt-10 rounded-xl border border-dashed border-gray-300 p-10 text-center text-gray-500">
+        <div className="mt-10 rounded-xl border border-dashed border-border p-10 text-center text-fg3">
           No case studies yet. Add one in{" "}
           <Link href="/studio" className="underline">
             Sanity Studio
@@ -39,7 +39,7 @@ export default async function CaseStudiesIndex() {
             <Link
               key={study._id}
               href={`/case-studies/${study.slug}`}
-              className="group flex items-center gap-6 rounded-2xl border border-gray-100 p-6 hover:border-gray-300"
+              className="group flex items-center gap-6 rounded-2xl border border-border p-6 hover:border-accent"
             >
               {study.logo && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -50,16 +50,16 @@ export default async function CaseStudiesIndex() {
                 />
               )}
               <div className="flex-1">
-                <p className="text-xs uppercase tracking-wide text-gray-400">{study.client}</p>
+                <p className="text-xs uppercase tracking-wide text-fg3">{study.client}</p>
                 <h2 className="mt-1 text-xl font-semibold tracking-tight group-hover:underline">
                   {study.title}
                 </h2>
-                {study.summary && <p className="mt-1 text-sm text-gray-600">{study.summary}</p>}
+                {study.summary && <p className="mt-1 text-sm text-fg2">{study.summary}</p>}
               </div>
               {study.metrics?.[0] && (
                 <div className="hidden shrink-0 text-right sm:block">
                   <div className="text-2xl font-semibold">{study.metrics[0].value}</div>
-                  <div className="text-xs uppercase tracking-wide text-gray-400">
+                  <div className="text-xs uppercase tracking-wide text-fg3">
                     {study.metrics[0].label}
                   </div>
                 </div>
