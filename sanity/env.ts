@@ -14,4 +14,8 @@ export const projectId =
 export const hubspotPortalId =
   process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID || ''
 
+// Server-only viewer token. This project gates anonymous API reads, so
+// server-side fetches need it. NOT prefixed NEXT_PUBLIC — never sent to browser.
+export const readToken = process.env.SANITY_API_READ_TOKEN || ''
+
 export const isSanityConfigured = projectId !== 'placeholder'

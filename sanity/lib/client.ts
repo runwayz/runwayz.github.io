@@ -1,11 +1,13 @@
 import { createClient } from 'next-sanity'
-import { apiVersion, dataset, projectId, isSanityConfigured } from '../env'
+import { apiVersion, dataset, projectId, readToken, isSanityConfigured } from '../env'
 
 export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // fast, cached reads; revalidation handles freshness
+  useCdn: false, // token-authenticated reads bypass the public CDN
+  token: readToken || undefined,
+  perspective: 'published', // never surface drafts on the live site
 })
 
 // Resilient fetch: never crashes the build/dev server when Sanity isn't

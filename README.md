@@ -50,7 +50,9 @@ Invite the client there (Manage → Members). Free tier = 3 users.
 
 1. Push this repo to GitHub.
 2. In Netlify: **Add new site → Import from Git** → pick the repo.
-3. Set the same env vars from `.env.local` in **Site settings → Environment variables**.
+3. Set the same env vars from `.env.local` in **Site settings → Environment variables** —
+   including `SANITY_API_READ_TOKEN` (the project gates anonymous reads, so the
+   server needs a viewer token; it stays server-side and never reaches the browser).
 4. Deploy. `netlify.toml` + the Next.js adapter handle the rest.
 
 ### Instant content updates (optional)
