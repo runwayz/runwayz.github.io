@@ -87,6 +87,19 @@ body {
   background: var(--bg-page);
   color: var(--fg1);
   font-family: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
+  /* clip (not hidden) avoids horizontal scroll from full-bleed sections while
+     keeping the sticky header working */
+  overflow-x: clip;
+}
+
+/* Decorative subheading — reusable across the site (~25px, humanist Cabin). */
+@layer components {
+  .subheading {
+    font-size: 1.5625rem; /* 25px */
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 }
 
 /* Consistent, branded, accessible keyboard focus indicator (WCAG 2.4.7). */

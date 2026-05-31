@@ -22,7 +22,7 @@ export default async function CaseStudiesIndex() {
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold tracking-tight">Case Studies</h1>
+      <h1 className="text-[2.7rem] font-semibold tracking-tight">Case Studies</h1>
       <p className="mt-3 text-fg2">How teams win with us.</p>
 
       {studies.length === 0 ? (

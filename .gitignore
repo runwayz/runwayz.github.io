@@ -50,3 +50,5 @@ next-env.d.ts
 
 # internal design source (posters copied into public/brand/vibe)
 resources_screenshots/
+assets/img/Hero Image.png
+assets/img/Hero.png

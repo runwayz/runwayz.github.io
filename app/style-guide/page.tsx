@@ -84,7 +84,7 @@ export default function StyleGuidePage() {
       <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">
         Living brand book
       </p>
-      <h1 className="mt-3 text-4xl font-bold tracking-tight text-fg1 sm:text-5xl">
+      <h1 className="mt-3 text-[2.7rem] font-bold tracking-tight text-fg1 sm:text-[3.6rem]">
         Runwayz style guide
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-[1.55] text-fg2">
@@ -237,8 +237,12 @@ export default function StyleGuidePage() {
                 <p className="text-5xl font-bold tracking-tight text-fg1">Build something real.</p>
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Heading 1 · 700</p>
-                <p className="text-4xl font-bold tracking-tight text-fg1">Real work. Real pay.</p>
+                <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Heading 1 · 700 · 2.7rem (3.6rem ≥sm)</p>
+                <p className="text-[2.7rem] font-bold tracking-tight text-fg1 sm:text-[3.6rem]">Real work. Real pay.</p>
+              </div>
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Subheading · .subheading · 25px</p>
+                <p className="subheading text-fg1">Runwayz helps your career take off.</p>
               </div>
               <div>
                 <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Heading 2 · 700</p>

@@ -43,7 +43,7 @@ export default async function CaseStudyPage({
           />
         )}
         <p className="mt-6 text-sm uppercase tracking-widest text-fg3">{study.client}</p>
-        <h1 className="mt-2 max-w-3xl text-4xl font-semibold tracking-tight">{study.title}</h1>
+        <h1 className="mt-2 max-w-3xl text-[2.7rem] font-semibold tracking-tight">{study.title}</h1>
         {study.summary && <p className="mt-4 max-w-2xl text-lg text-fg2">{study.summary}</p>}
 
         {study.metrics && study.metrics.length > 0 && (

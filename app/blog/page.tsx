@@ -22,7 +22,7 @@ export default async function BlogIndex() {
 
   return (
     <div>
-      <h1 className="text-4xl font-semibold tracking-tight">Blog</h1>
+      <h1 className="text-[2.7rem] font-semibold tracking-tight">Blog</h1>
       <p className="mt-3 text-fg2">News, ideas, and updates.</p>
 
       {posts.length === 0 ? (

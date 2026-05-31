@@ -38,7 +38,7 @@ export default async function BlogPostPage({
         {post.author?.name ? `${post.author.name} · ` : ""}
         {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
       </p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight">{post.title}</h1>
+      <h1 className="mt-3 text-[2.7rem] font-semibold tracking-tight">{post.title}</h1>
       {post.excerpt && <p className="mt-4 text-lg text-fg2">{post.excerpt}</p>}
 
       {post.coverImage && (
