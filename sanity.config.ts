@@ -11,7 +11,9 @@ export default defineConfig({
   title: 'Runwayz',
   projectId,
   dataset,
-  basePath: '/studio',
+  // '/studio' for the embedded Next route; the hosted *.sanity.studio deploy
+  // sets SANITY_STUDIO_BASEPATH=/ so it mounts at the root.
+  basePath: process.env.SANITY_STUDIO_BASEPATH ?? '/studio',
   plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
   schema: { types: schemaTypes },
 })

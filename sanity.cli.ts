@@ -6,4 +6,5 @@ export default defineCliConfig({
   api: { projectId, dataset },
   // Set a stable hostname so the Studio deploys to <studioHost>.sanity.studio.
   studioHost: 'runwayz',
+  deployment: { appId: 'kquir0qucpc1rwhyyy9ymv82' },
 })
