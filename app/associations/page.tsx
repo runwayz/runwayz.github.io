@@ -98,7 +98,7 @@ export default function AssociationsPage() {
       {/* The shortage */}
       <section className="mt-20 border-t border-border pt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The shortage</p>
-        <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-fg1">
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           Your members are hiring against a tide they didn&apos;t create.
         </h2>
         <div className="mt-4 max-w-2xl space-y-4 text-fg2">
@@ -127,7 +127,7 @@ export default function AssociationsPage() {
 
       {/* What your association gets */}
       <section className="mt-20 border-t border-border pt-12">
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-fg1">What your association gets: three things at once.</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-fg1">What your association gets: three things at once.</h2>
         <p className="mt-4 max-w-2xl text-fg2">
           Pipeline growth, member-side placement, and a tangible benefit you can show at your next
           board meeting — layered. Most partners give you one. We think you should have all three.
@@ -146,7 +146,7 @@ export default function AssociationsPage() {
 
       {/* Who we deliver */}
       <section className="mt-20 border-t border-border pt-12">
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-fg1">
+        <h2 className="text-3xl font-bold tracking-tight text-fg1">
           Who we deliver: early talent, caught in the window before they drift.
         </h2>
         <p className="mt-4 max-w-2xl text-fg2">
@@ -171,7 +171,7 @@ export default function AssociationsPage() {
       {/* The partnership */}
       <section className="mt-20 border-t border-border pt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">Strategic partner pilot</p>
-        <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-fg1">An 18-month Strategic Partner pilot.</h2>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">An 18-month Strategic Partner pilot.</h2>
         <div className="mt-4 max-w-2xl space-y-4 text-fg2">
           <p>We&apos;re working with a small group of associations to prove out the model in 2026. The partnership is structured so your members carry no risk — and your association carries no implementation lift.</p>
           <p>One conversation. One MOU. A benefit you can announce to members the same week.</p>

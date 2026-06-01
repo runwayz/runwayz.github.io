@@ -10,7 +10,7 @@ export function ServeCTA() {
       <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">
         Let&apos;s talk
       </p>
-      <h2 className="mt-2 max-w-2xl text-3xl font-bold tracking-tight text-fg1">
+      <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
         Twenty minutes, one real conversation.
       </h2>
       <p className="mt-3 max-w-2xl text-fg2">

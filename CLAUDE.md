@@ -21,6 +21,11 @@ invent ad-hoc values. Map their intent to the correct existing token/utility/
 class from the style guide. Screenshots or descriptions may not translate
 perfectly to our classes — translate them to the canonical tokens.
 
+**Rule 3 — content headline width.** On content pages, **section headlines
+(`<h2>`) span the full content width** — no `max-w-*` cap. The page **`<h1>`
+keeps its width cap** (e.g. `max-w-3xl`), and **body copy stays readability-
+capped** (`max-w-2xl`). Apply this to every top-level content page/template.
+
 # Standard content-page template (DECIDED — build pending design)
 
 All top-level pages **except the homepage** (talent, employers, workforce-boards,

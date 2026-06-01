@@ -98,7 +98,7 @@ export default function UnionsPage() {
       {/* The trade gap */}
       <section className="mt-20 border-t border-border pt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The trade gap</p>
-        <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-fg1">
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           The strength of any union is the next generation that joins it.
         </h2>
         <div className="mt-4 max-w-2xl space-y-4 text-fg2">
@@ -127,7 +127,7 @@ export default function UnionsPage() {
 
       {/* What we build together */}
       <section className="mt-20 border-t border-border pt-12">
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-fg1">What we build together: three things at once.</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-fg1">What we build together: three things at once.</h2>
         <p className="mt-4 max-w-2xl text-fg2">
           Membership growth, stronger apprenticeship intake, and a story your union can tell about
           its role in the next generation of the trade — layered. Not a vendor relationship. A
@@ -147,7 +147,7 @@ export default function UnionsPage() {
 
       {/* Who walks through the door */}
       <section className="mt-20 border-t border-border pt-12">
-        <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-fg1">
+        <h2 className="text-3xl font-bold tracking-tight text-fg1">
           Who walks through the door: early talent, caught in the window before they drift.
         </h2>
         <p className="mt-4 max-w-2xl text-fg2">
@@ -172,7 +172,7 @@ export default function UnionsPage() {
       {/* The partnership */}
       <section className="mt-20 border-t border-border pt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">Founding union partners</p>
-        <h2 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight text-fg1">A collaborative build — not a vendor pitch.</h2>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">A collaborative build — not a vendor pitch.</h2>
         <div className="mt-4 max-w-2xl space-y-4 text-fg2">
           <p>We&apos;re not asking unions to adopt a platform. We&apos;re asking a small group of partner unions to help us build the right one — together, in their geography, with their locals and training directors.</p>
           <p>The model is co-design. You shape where Runwayz shows up, which apprenticeship pathways are featured, and how outcomes get measured. The trade decides what its own pipeline looks like.</p>
