@@ -182,7 +182,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <h3 className="mt-12 text-xl font-bold tracking-tight text-fg1">
+          How Runwayz supports your career
+        </h3>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
           {TALENT_STEPS.map((s) => (
             <div key={s.title} className="rounded-2xl border border-border bg-surface p-6">
               <h3 className="text-lg font-bold tracking-tight text-fg1">{s.title}</h3>
