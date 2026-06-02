@@ -156,7 +156,7 @@ export default function TalentPage() {
           You don&apos;t pick a career on day one. You start exploring, build as
           you go, and keep leveling up — for as long as you&apos;re working.
         </p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STAGES.map((s) => (
             <div
               key={s.n}
