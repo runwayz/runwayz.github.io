@@ -198,12 +198,12 @@ export default function Home() {
           >
             Get Runwayz
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href="https://platform.runwayz.com"
             className="rounded-full border border-border px-5 py-2.5 text-sm font-medium text-fg1 hover:bg-raised"
           >
             Take the Career Quiz
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -265,10 +265,10 @@ export default function Home() {
           future.
         </h2>
         <p className="mt-4 max-w-2xl text-fg2">
-          The Runwayz mission is to help bridging early-career talent explore the
-          wide range of careers they could pursue, see the pathways that will
-          help them maximizing their lifetime income and quality of life, and
-          systematically help them close gaps to enable them to advance.
+          The Runwayz mission is to help early-career talent explore the wide
+          range of careers they could pursue, see the pathways that will help
+          them maximize their lifetime income and quality of life, and
+          systematically help them close the gaps to advance.
         </p>
         <div className="mt-8">
           <Link

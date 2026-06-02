@@ -137,12 +137,12 @@ export default function TalentPage() {
           </div>
         </div>
         <div className="mt-8">
-          <Link
-            href="/contact"
+          <a
+            href="https://platform.runwayz.com"
             className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
             Take the quiz
-          </Link>
+          </a>
         </div>
       </section>
 
