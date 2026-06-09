@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Hero } from "@/components/Hero";
 import { ServeCTA } from "@/components/ServeCTA";
 
 export const metadata = { title: "Associations · Runwayz" };
@@ -50,7 +51,7 @@ const LIFECYCLE = [
   },
   {
     org: "Grow",
-    state: "Active",
+    state: "Advancing",
     action: "Recruit people who are Actively Working toward the field:",
     quote: "I'm ready to work; which companies are hiring?",
     lead: "Turn pursuers into hires at your member companies.",
@@ -105,47 +106,23 @@ const GETS = [
 export default function AssociationsPage() {
   return (
     <div>
-      {/* Full-bleed image hero — same treatment as the homepage hero */}
-      <section className="relative left-1/2 -mt-12 w-screen -translate-x-1/2 overflow-hidden">
-        <Image
-          src="/brand/associations.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-b from-page/0 to-page"
-        />
-        <div className="relative z-[2] mx-auto min-h-[420px] w-full max-w-6xl px-6 pb-28 pt-20 sm:min-h-[620px] sm:pt-28">
-          <div className="max-w-3xl [text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F5ECD7]/90">
-              For trade associations
-            </p>
-            <h1 className="mt-4 max-w-4xl text-[2.7rem] font-bold tracking-tight text-[#F5ECD7] sm:text-[3.6rem]">
-              The talent pipeline your members can&apos;t build alone.
-            </h1>
-            <p className="subheading mt-6 max-w-3xl text-[#F5ECD7]">
-              Runwayz helps your association engage early-career talent in your trade, and matches
-              the strongest candidates to opportunities at your member companies.
-            </p>
-            <div className="mt-8 [text-shadow:none]">
-              <Link href="/contact" className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90">
-                Get in touch
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero
+        image="/brand/associations2.png"
+        eyebrow="For trade associations"
+        title="The talent pipeline your members can't build alone."
+        subtitle="Runwayz helps your association engage early-career talent in your trade, and matches the strongest candidates to opportunities at your member companies."
+      >
+        <Link href="/contact" className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90">
+          See a Demo
+        </Link>
+      </Hero>
 
       {/* The shortage */}
       <section className="mt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The shortage</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
-          Hiring headwinds that impact your member companies also impact the growth and success of
-          your association.
+          The hiring headwinds your member companies are facing also impact your association&apos;s
+          growth.
         </h2>
         <dl className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (

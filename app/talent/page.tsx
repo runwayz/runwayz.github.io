@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Hero } from "@/components/Hero";
 
 export const metadata = { title: "For Talent · Runwayz" };
 
@@ -18,11 +19,12 @@ const CRITERIA = [
   },
 ];
 
-type Stage = { n: string; name: string; lead: string; bullets: string[] };
+type Stage = { n: string; state: string; name: string; lead: string; bullets: string[] };
 
 const STAGES: Stage[] = [
   {
     n: "01",
+    state: "Interested",
     name: "Discover Pathways",
     lead: "There's a wide world of possible career paths — likely some you've never thought of. Runwayz helps you explore them all.",
     bullets: [
@@ -33,6 +35,7 @@ const STAGES: Stage[] = [
   },
   {
     n: "02",
+    state: "Pursuing",
     name: "Strengthen your Skills",
     lead: "Runwayz shows you the steps between where you are today and where you'd need to be to land a job in a specific path — and helps you close the gap, systematically.",
     bullets: [
@@ -44,6 +47,7 @@ const STAGES: Stage[] = [
   },
   {
     n: "03",
+    state: "Advancing",
     name: "Gain Real Experience",
     lead: "Once you've found a path you want to explore more deeply, Runwayz helps you take the first step — connecting you with jobs and apprenticeships directly in the platform.",
     bullets: [
@@ -52,130 +56,105 @@ const STAGES: Stage[] = [
       "Apply to our partner trade unions in the skilled trades, directly through Runwayz.",
     ],
   },
-  {
-    n: "04",
-    name: "Keep Advancing",
-    lead: "Getting a job isn't the finish line; it's just the beginning. Treat work like a game, and every new experience becomes a way to level up.",
-    bullets: [
-      "Grow your skills, seniority, and income over time.",
-      "See recommended next certifications and steps to advance in your field.",
-      "Explore adjacent paths when you're ready for a change.",
-    ],
-  },
 ];
 
 export default function TalentPage() {
   return (
     <div>
-      {/* Full-bleed image hero — same treatment as the homepage hero */}
-      <section className="relative left-1/2 -mt-12 w-screen -translate-x-1/2 overflow-hidden">
-        <Image
-          src="/brand/talent-hero-gold.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        {/* Left scrim so the cream copy stays readable in light and dark mode */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/20 to-transparent"
-        />
-        {/* Shorter bottom fade into the page color (cream / midnight) */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-2/5 bg-gradient-to-b from-page/0 to-page"
-        />
-        <div className="relative z-[2] mx-auto w-full max-w-6xl px-6 pb-28 pt-20 sm:pt-28">
-          <div className="max-w-3xl [text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F5ECD7]/90">
-              Early-Career Talent
-            </p>
-            <h1 className="mt-4 max-w-4xl text-[2.7rem] font-bold tracking-tight text-[#F5ECD7] sm:text-[3.6rem]">
-              We know the future feels uncertain. But{" "}
-              <span className="text-accent">your</span>{" "}
-              future doesn&apos;t have to.
-            </h1>
-            <p className="subheading mt-6 max-w-3xl text-[#F5ECD7]">
-              Runwayz helps you build a future-proof career and maximize your earning
-              potential, to help you achieve the life you want.
-            </p>
-            <p className="mt-4 max-w-3xl text-lg leading-[1.55] text-[#F5ECD7]/90">
-              If you&apos;re just starting your career, Runwayz helps you identify
-              professional pathways with high earning potential and technical skills
-              that are likely to be resilient to AI-driven job disruption. Runwayz
-              helps you build your profile and develop skills to make you a strong
-              match for those roles; and then connects with real-world opportunities in
-              your preferred fields.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4 [text-shadow:none]">
-              <a
-                href="https://platform.runwayz.com/talent/signup?step=form"
-                className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
-              >
-                Create an account
-              </a>
-              <a
-                href="https://platform.runwayz.com/talent/signup"
-                className="rounded-full border border-[#F5ECD7]/50 px-5 py-2.5 text-sm font-medium text-[#F5ECD7] hover:bg-white/10"
-              >
-                Take the Careers Quiz
-              </a>
-            </div>
-          </div>
+      <Hero
+        image="/brand/talent-hero-gold-4.png"
+        scrim="warm"
+        eyebrow="Early-Career Talent"
+        title="We know the future feels uncertain. But your future doesn't have to."
+        subtitle="Runwayz helps you build a future-proof career and maximize your earning potential, to help you achieve the life you want."
+      >
+        <div className="flex flex-wrap gap-4">
+          <a
+            href="https://platform.runwayz.com/talent/signup?step=form"
+            className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
+          >
+            Create an account
+          </a>
+          <a
+            href="https://platform.runwayz.com/talent/signup"
+            className="rounded-full bg-[#e17248] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e17248]/90"
+          >
+            Take the Careers Quiz
+          </a>
         </div>
-      </section>
+      </Hero>
 
-      {/* Name the fear → what Runwayz prioritizes */}
-      <section className="mt-20 border-t border-border pt-12">
-        <h2 className="text-3xl font-bold tracking-tight text-fg1">
+      {/* The fear */}
+      <section className="mt-12">
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The challenge</p>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           It was always hard to answer the question, &ldquo;What do you want to
-          be when you grow up?&rdquo; Now, it&apos;s even harder.
+          be when you grow up?&rdquo; Now, we know it&apos;s even harder.
         </h2>
         <div className="mt-4 max-w-3xl space-y-4 text-fg2">
           <p>
-            With the rise of AI, you might be wondering whether the jobs
-            you&apos;re interested in will even be there in ten years. Exploring
-            careers can feel overwhelming — not just figuring out where to start,
-            but the weight of the risk that you&apos;ll pick a &ldquo;wrong&rdquo;
-            path, one that gets disrupted by AI or a changing economy. But the
-            future is bright. You just have to know where to look.
+            With the rise of AI, you might be wondering whether the jobs you&apos;re
+            interested in will even be there in ten years. Exploring careers can feel
+            overwhelming. It&apos;s hard to know where to start, and even harder to feel
+            sure that you&apos;re picking the &ldquo;right path&rdquo;, one that
+            won&apos;t be disrupted by AI or a changing economy.
+          </p>
+          <p className="text-lg font-semibold text-fg1">
+            But the future is bright. You just have to know where to look.
+          </p>
+        </div>
+      </section>
+
+      {/* What Runwayz does → recommended jobs */}
+      <section className="mt-20 border-t border-border pt-12">
+        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The Runwayz Solution</p>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
+          Runwayz helps you explore career pathways and land real opportunities.
+        </h2>
+        <div className="mt-4 max-w-3xl space-y-4 text-fg2">
+          <p>
+            If you&apos;re just starting your career, Runwayz helps you identify
+            professional pathways with high earning potential and technical skills that
+            are likely to be resilient to AI-driven job disruption. Runwayz helps you
+            build your profile and develop skills to make you a strong match for those
+            roles; and then connects with real-world opportunities in your preferred
+            fields.
           </p>
           <p>
-            You can browse and explore every job and career on Runwayz — but it
-            actively points you toward the paths most worth pursuing.
+            You can browse and explore every career path on Runwayz, but the Runwayz
+            platform prioritizes fields that offer high-income, secure career pathways.
           </p>
         </div>
         <div className="mt-8 rounded-2xl border border-border bg-surface p-6 sm:p-8">
-          <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
-            <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-              <path
-                fillRule="evenodd"
-                d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.1 3.1 6.8-6.8a1 1 0 011.4 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Runwayz Recommended
-          </p>
-          <h3 className="mt-2 text-xl font-bold tracking-tight text-fg1">
-            Career Paths Runwayz Prioritizes
+          <h3 className="text-xl font-bold tracking-tight text-fg1">
+            What careers does Runwayz recommend?
           </h3>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
             {CRITERIA.map((c) => (
               <div key={c.title}>
-                <h4 className="font-bold text-fg1">{c.title}</h4>
+                <div className="flex items-start gap-2">
+                  <svg className="mt-0.5 h-5 w-5 shrink-0 text-accent" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
+                    <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.1 3.1 6.8-6.8a1 1 0 011.4 0z" clipRule="evenodd" />
+                  </svg>
+                  <h4 className="font-bold text-fg1">{c.title}</h4>
+                </div>
                 <p className="mt-1 text-sm text-fg2">{c.body}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex flex-col items-center gap-3">
           <a
             href="https://platform.runwayz.com/talent/signup"
             className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
-            Take the quiz
+            Take the Career Explorer Quiz
+          </a>
+          <a
+            href="https://platform.runwayz.com/talent/signup?step=form"
+            className="text-sm font-medium text-accent hover:underline"
+          >
+            Or sign up for an account to see open opportunities
           </a>
         </div>
       </section>
@@ -186,30 +165,64 @@ export default function TalentPage() {
           Runwayz is your partner at every step of your professional journey,
           helping you increase your earning potential and job security.
         </h2>
-        <p className="mt-4 max-w-3xl text-fg2">
-          You don&apos;t pick a career on day one. You start exploring, build as
-          you go, and keep leveling up — for as long as you&apos;re working.
-        </p>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {STAGES.map((s) => (
-            <div
-              key={s.n}
-              className="rounded-2xl border border-border bg-surface p-8"
-            >
-              <span className="text-sm font-bold text-accent">{s.n}</span>
-              <h3 className="mt-2 text-xl font-bold tracking-tight text-fg1">
-                {s.name}
-              </h3>
-              <div className="mt-3 space-y-3 text-sm leading-[1.55] text-fg2">
-                <p>{s.lead}</p>
-                <ul className="list-disc space-y-1 pl-5">
-                  {s.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
+        <div className="mt-12 space-y-12">
+          {STAGES.map((s, idx) => (
+            <div key={s.n} className="grid items-center gap-8 md:grid-cols-2">
+              <div className={idx % 2 === 1 ? "md:order-2" : undefined}>
+                <div className="flex items-center gap-3">
+                  <span className="text-sm font-bold text-accent">{s.n}</span>
+                  <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-accent">
+                    {s.state}
+                  </span>
+                </div>
+                <h3 className="mt-2 text-2xl font-bold tracking-tight text-fg1">
+                  {s.name}
+                </h3>
+                <div className="mt-3 space-y-3 text-fg2">
+                  <p>{s.lead}</p>
+                  <ul className="list-disc space-y-1 pl-5">
+                    {s.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              {/* Grey placeholder for a platform screenshot */}
+              <div
+                className={`flex aspect-[16/10] items-center justify-center rounded-2xl border border-border bg-fg3/10 text-sm font-medium text-fg3 ${
+                  idx % 2 === 1 ? "md:order-1" : ""
+                }`}
+              >
+                Platform screenshot
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Pull quote — placeholder, same treatment as the Associations quote */}
+      <section className="relative left-1/2 mt-20 w-screen -translate-x-1/2 overflow-hidden">
+        <Image src="/brand/talent-pullquote.png" alt="" fill sizes="100vw" className="object-cover object-center" />
+        <div aria-hidden className="absolute inset-0 bg-black/55" />
+        <div className="relative z-[1] mx-auto max-w-4xl px-6 py-24 text-center sm:py-32">
+          <figure className="[text-shadow:0_2px_20px_rgba(0,0,0,0.6)]">
+            <blockquote className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              &ldquo;[ Pull quote goes here: a short, punchy line from a Runwayz user about finding
+              their path. ]&rdquo;
+            </blockquote>
+            <div className="mt-8 flex items-center justify-center gap-4">
+              <div
+                aria-hidden
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-white/15 text-[10px] font-medium uppercase tracking-wide text-white/80 ring-2 ring-white/30 [text-shadow:none]"
+              >
+                Photo
+              </div>
+              <figcaption className="text-left text-sm text-white/90">
+                <span className="block font-semibold text-white">First Last</span>
+                Title, Organization
+              </figcaption>
+            </div>
+          </figure>
         </div>
       </section>
 

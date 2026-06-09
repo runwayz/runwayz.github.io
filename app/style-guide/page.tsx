@@ -246,7 +246,7 @@ export default function StyleGuidePage() {
               </div>
               <div>
                 <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Subheading · .subheading · 25px</p>
-                <p className="subheading text-fg1">Runwayz helps your career take off.</p>
+                <p className="subheading text-fg1">Runwayz helps great careers take off, in the skilled trades and beyond.</p>
               </div>
               <div>
                 <p className="text-[11px] uppercase tracking-[0.16em] text-fg3">Heading 2 · 700</p>

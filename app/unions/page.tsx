@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Hero } from "@/components/Hero";
 import { ServeCTA } from "@/components/ServeCTA";
 
 export const metadata = { title: "Unions · Runwayz" };
@@ -46,7 +47,7 @@ const LIFECYCLE = [
   },
   {
     org: "Grow",
-    state: "Ready",
+    state: "Advancing",
     action: "Convert people who are Ready for the field:",
     quote: "I'm ready for a training apprenticeship pathway; where do I go from here?",
     lead: "Turn pursuers into active, dues-paying members.",
@@ -105,24 +106,21 @@ const PARTNERSHIP = [
 
 export default function UnionsPage() {
   return (
-    <div className="py-8">
-      {/* Hero */}
-      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">For trade unions</p>
-      <h1 className="mt-4 max-w-4xl text-[2.7rem] font-bold tracking-tight text-fg1 sm:text-[3.6rem]">
-        Your next generation of members is ready to hear from you. Runwayz helps you reach them.
-      </h1>
-      <p className="subheading mt-6 max-w-3xl text-fg2">
-        Runwayz helps early talent discover your trade, and gives you the tools to reach them, teach
-        them, and convert the most serious candidates into apprenticeship programs and memberships.
-      </p>
-      <div className="mt-8">
+    <div>
+      <Hero
+        image="/brand/trade-unions-blue.png"
+        scrim="dark"
+        eyebrow="For trade unions"
+        title="Your next generation of members is out there. Runwayz lets you reach them."
+        subtitle="Runwayz helps early talent discover your trade, and gives you the tools to reach them, teach them, and convert the most serious candidates into apprenticeship programs and memberships."
+      >
         <Link href="/contact" className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90">
-          Get in touch
+          See a Demo
         </Link>
-      </div>
+      </Hero>
 
       {/* The Runwayz platform: Engage → Nurture → Grow → Measure */}
-      <section className="mt-20 border-t border-border pt-12">
+      <section className="mt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The Runwayz platform</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           Runwayz: Helping Trade Unions engage, nurture, and build new members.
@@ -202,25 +200,35 @@ export default function UnionsPage() {
         </div>
 
         <h3 className="mt-10 text-xl font-bold tracking-tight text-fg1">What you get</h3>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {FEATURES.map((f) => (
-            <div key={f.title} className="rounded-2xl border border-border bg-surface p-6">
-              <h4 className="font-bold text-fg1">{f.title}</h4>
-              <div className="mt-3 space-y-3 text-sm text-fg2">
-                {f.items.map((it, i) => (
-                  <p key={i}>{it}</p>
-                ))}
-              </div>
-              {f.sub && (
-                <ul className="mt-4 space-y-3">
-                  {f.sub.map((s) => (
-                    <li key={s.title} className="rounded-lg bg-raised p-3">
-                      <p className="text-sm font-semibold text-fg1">{s.title}</p>
-                      <p className="mt-1 text-sm text-fg2">{s.body}</p>
-                    </li>
+        <div className="mt-8 space-y-12">
+          {FEATURES.map((f, idx) => (
+            <div key={f.title} className="grid items-center gap-8 md:grid-cols-2">
+              <div className={idx % 2 === 1 ? "md:order-2" : undefined}>
+                <h4 className="text-2xl font-bold tracking-tight text-fg1">{f.title}</h4>
+                <div className="mt-3 space-y-3 text-fg2">
+                  {f.items.map((it, i) => (
+                    <p key={i}>{it}</p>
                   ))}
-                </ul>
-              )}
+                </div>
+                {f.sub && (
+                  <ul className="mt-4 space-y-3">
+                    {f.sub.map((s) => (
+                      <li key={s.title} className="rounded-lg bg-raised p-3">
+                        <p className="text-sm font-semibold text-fg1">{s.title}</p>
+                        <p className="mt-1 text-sm text-fg2">{s.body}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              {/* Grey placeholder for a platform screenshot */}
+              <div
+                className={`flex aspect-[16/10] items-center justify-center rounded-2xl border border-border bg-fg3/10 text-sm font-medium text-fg3 ${
+                  idx % 2 === 1 ? "md:order-1" : ""
+                }`}
+              >
+                Platform screenshot
+              </div>
             </div>
           ))}
         </div>
@@ -274,7 +282,7 @@ export default function UnionsPage() {
       </section>
 
       {/* Consistent CTA (shared across Who-we-serve pages) */}
-      <ServeCTA />
+      <ServeCTA heading="Grab 20 minutes with our team to transform your Union's awareness and growth initiatives." />
     </div>
   );
 }

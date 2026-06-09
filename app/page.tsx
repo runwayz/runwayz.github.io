@@ -9,17 +9,17 @@ const TALENT_STEPS = [
   {
     title: "See your Potential",
     subhead: "Career matchmaker and explorer",
-    body: "Not sure what careers are right for you? Runwayz helps you explore and refine your self-understanding through our Career Matchmaker (swipe right on careers you like), and see personalized recommendations on good fits.",
+    body: "Not sure what careers fit you? Explore them with our Career Matchmaker. Swipe right on the ones you like. Runwayz turns that into personalized recommendations for good fits.",
   },
   {
     title: "Believe your Potential",
     subhead: "Guided profile development",
-    body: "See the gaps you'd need to close to get a job in a field you're interested in; get help finding good certification providers and guidance on how to proceed; build your profile up to have the strongest possible application.",
+    body: "See the gaps between you and a job in your field. Get help finding good certification providers and a clear path forward. Build your profile into the strongest possible application.",
   },
   {
     title: "Achieve your Potential",
     subhead: "Apply to Opportunities",
-    body: "Apply, get opportunities: apprenticeships, internships, jobs, and union memberships. Keep advancing certifications and skills to level up.",
+    body: "Apply to real opportunities: apprenticeships, internships, jobs, and union memberships. Keep earning certifications and growing your skills to level up.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function Home() {
                 Build your future.
               </h1>
               <p className="subheading mt-5 max-w-xl text-[#F5ECD7]/90">
-                Runwayz helps your career take off.
+                Runwayz helps great careers take off, in the skilled trades and beyond.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 [text-shadow:none]">
                 <Link

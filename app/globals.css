@@ -83,6 +83,12 @@
   --font-sans: var(--font-cabin);
 }
 
+html {
+  /* Base text size, bumped a little from the 16px browser default so all
+     rem-based type scales up slightly site-wide. */
+  font-size: 106.25%; /* 17px */
+}
+
 body {
   background: var(--bg-page);
   color: var(--fg1);
