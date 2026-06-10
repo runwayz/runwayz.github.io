@@ -43,36 +43,26 @@ const SCHOOL_BENEFITS = [
 
 export default function EducationPage() {
   return (
-    <div className="py-8">
+    <div>
       <Hero
+        image="/brand/schools.png"
+        scrim="dark"
         eyebrow="For high schools and colleges"
-        title="Workforce readiness for your students, at no cost to your school."
-        subtitle="Runwayz is always free for high schools and colleges. Give your students a platform to explore career pathways, build durable skills, and apply to real opportunities."
+        title="Workforce readiness for your students. Real visibility into student career outcomes."
+        subtitle={
+          <>
+            Give your students a platform to explore career pathways, build durable skills, and
+            apply to real opportunities. <span className="italic">Free forever to high schools.</span>
+          </>
+        }
       >
         <Link href="/contact" className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90">
           See a Demo
         </Link>
       </Hero>
 
-      {/* Always free */}
-      <section className="mt-20 border-t border-border pt-12">
-        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">Always free</p>
-        <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">Free for schools, for good.</h2>
-        <div className="mt-4 max-w-3xl space-y-4 text-fg2">
-          <p>
-            Runwayz is, and always will be, free for high schools and colleges. We believe every
-            student deserves a clear line of sight from the classroom to a good career, no matter
-            their school&apos;s budget.
-          </p>
-          <p>
-            Runwayz is a no-cost platform for helping students explore career pathways and apply to
-            real opportunities, built to support your workforce-readiness goals.
-          </p>
-        </div>
-      </section>
-
       {/* For your students */}
-      <section className="mt-20 border-t border-border pt-12">
+      <section className="mt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">For your students</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           From exploring careers to landing the first opportunity.

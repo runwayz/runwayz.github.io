@@ -108,7 +108,7 @@ export default function UnionsPage() {
   return (
     <div>
       <Hero
-        image="/brand/trade-unions-blue.png"
+        image="/brand/trade-unions-crew.png"
         scrim="dark"
         eyebrow="For trade unions"
         title="Your next generation of members is out there. Runwayz lets you reach them."

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SERVE_GROUPS } from "@/lib/nav";
 import { TicketRotator } from "@/components/TicketRotator";
+import { RecommendedCareers } from "@/components/RecommendedCareers";
 
 const SEGMENTS = SERVE_GROUPS.flatMap((g) => g.items);
 
@@ -23,12 +24,6 @@ const TALENT_STEPS = [
   },
 ];
 
-const PARTNER_CRITERIA = [
-  'High-Earning Potential Career Pathways, not just "jobs"',
-  "Guarded from AI Disruption, due to strong technical skill requirements and required certifications",
-  "Accessible entry points for required certifications or education",
-];
-
 // Partner logos render on white chips so full-color logos stay legible in both
 // light and dark mode. Add more by giving a partner a `logo` path.
 const PARTNERS: { name: string; logo: string }[] = [
@@ -39,6 +34,23 @@ const PARTNERS: { name: string; logo: string }[] = [
   { name: "Build Chicago", logo: "/brand/partners/build-chicago.png" },
   { name: "Howard County", logo: "/brand/partners/howard-county.png" },
   { name: "Chicago Hope Academy", logo: "/brand/partners/chicago-hope-academy.png" },
+];
+
+const SPOTLIGHTS = [
+  {
+    name: "Chemical Coaters Association International",
+    logo: "/brand/partners/chemical-coaters.png",
+    body: "CCAI is introducing a new generation to careers in finishing and coating, and giving its member companies modern tools to engage future talent.",
+    href: "/associations",
+    linkLabel: "Learn about Runwayz for Trade Associations",
+  },
+  {
+    name: "United Brotherhood of Carpenters",
+    logo: "/brand/partners/carpenters-union.png",
+    body: "The Carpenters are reaching the next generation of skilled tradespeople and strengthening apprenticeship intake through Runwayz.",
+    href: "/unions",
+    linkLabel: "Learn about Runwayz for Trade Unions",
+  },
 ];
 
 export default function Home() {
@@ -227,27 +239,29 @@ export default function Home() {
           Let Runwayz help you recruit the next generation of talent to join your
           union or association, or to fill open roles in your organization.
           Runwayz prioritizes partnerships with organizations in fields with
-          roles that align to the Runwayz Mission:
+          roles that align to the Runwayz Mission.
         </p>
-        <ul className="mt-6 max-w-3xl space-y-3">
-          {PARTNER_CRITERIA.map((c) => (
-            <li key={c} className="flex gap-3">
-              <svg className="mt-0.5 h-5 w-5 shrink-0 text-accent" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-                <path fillRule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4l3.1 3.1 6.8-6.8a1 1 0 011.4 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-fg2">{c}</span>
-            </li>
-          ))}
-        </ul>
+        <RecommendedCareers className="mt-6" />
 
-        {/* Partner spotlights (placeholder) */}
+        {/* Partner spotlights */}
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {[0, 1].map((i) => (
-            <div
-              key={i}
-              className="flex aspect-[16/9] items-center justify-center rounded-2xl border border-border bg-fg3/10 text-sm font-medium text-fg3"
-            >
-              Partner spotlight
+          {SPOTLIGHTS.map((s) => (
+            <div key={s.name} className="rounded-2xl bg-[#1f2430] p-6 dark:bg-surface dark:ring-1 dark:ring-border sm:p-8">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/55">
+                Partner Spotlight
+              </p>
+              <div className="mt-4 inline-flex items-center justify-center rounded-lg bg-white p-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.logo} alt={s.name} className="h-[72px] w-auto max-w-[270px] object-contain" />
+              </div>
+              <h3 className="mt-5 text-xl font-bold tracking-tight text-white">{s.name}</h3>
+              <p className="mt-2 text-sm leading-[1.55] text-white/75">{s.body}</p>
+              <Link
+                href={s.href}
+                className="mt-4 inline-block text-sm font-medium text-[#7db8e4] hover:underline"
+              >
+                {s.linkLabel} →
+              </Link>
             </div>
           ))}
         </div>

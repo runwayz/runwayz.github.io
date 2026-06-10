@@ -56,8 +56,12 @@ export function Hero({ eyebrow, title, subtitle, children, image, scrim = "none"
           <h1 className="mt-4 max-w-4xl text-[2.7rem] font-bold tracking-tight text-[#F5ECD7] sm:text-[3.6rem]">
             {title}
           </h1>
-          <p className="subheading mt-6 max-w-xl text-[#F5ECD7]">{subtitle}</p>
-          {children ? <div className="mt-8 [text-shadow:none]">{children}</div> : null}
+          {/* Tablet and below: subhead + CTA sit in a frosted panel for legibility.
+              lg and up: plain cream text directly over the image. */}
+          <div className="mt-6 max-w-xl rounded-2xl border border-border bg-surface/90 p-6 backdrop-blur-sm [text-shadow:none] lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none lg:[text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
+            <p className="subheading text-fg2 lg:text-[#F5ECD7]">{subtitle}</p>
+            {children ? <div className="mt-6 lg:[text-shadow:none]">{children}</div> : null}
+          </div>
         </div>
       </div>
     </section>

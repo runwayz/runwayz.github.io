@@ -13,7 +13,7 @@ type ServeCTAProps = {
 
 export function ServeCTA({
   heading = "Twenty minutes, one real conversation.",
-  body = "Tell us about your organization and the talent challenges you're seeing this year. We'll show you what a partnership would look like. No slides required.",
+  body = "Tell us about your organization and the talent challenges you're seeing this year. We'll show you what a partnership would look like.",
   note,
 }: ServeCTAProps = {}) {
   return (

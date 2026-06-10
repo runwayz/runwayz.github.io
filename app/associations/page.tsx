@@ -121,8 +121,7 @@ export default function AssociationsPage() {
       <section className="mt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The shortage</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
-          The hiring headwinds your member companies are facing also impact your association&apos;s
-          growth.
+          Hiring in the skilled trades has gotten harder, and it is impacting your member companies.
         </h2>
         <dl className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s) => (
@@ -211,7 +210,7 @@ export default function AssociationsPage() {
 
       {/* Pull quote — CCAI, full-bleed with background image */}
       <section className="relative left-1/2 mt-20 w-screen -translate-x-1/2 overflow-hidden">
-        <Image src="/brand/cc-quote.png" alt="" fill sizes="100vw" className="object-cover object-center" />
+        <Image src="/brand/associations-pullquote-3.png" alt="" fill sizes="100vw" className="object-cover object-center" />
         <div aria-hidden className="absolute inset-0 bg-black/55" />
         <div className="relative z-[1] mx-auto max-w-4xl px-6 py-24 text-center sm:py-32">
           <figure className="[text-shadow:0_2px_20px_rgba(0,0,0,0.6)]">

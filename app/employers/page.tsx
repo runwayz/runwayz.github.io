@@ -54,8 +54,10 @@ const FILTERS = [
 
 export default function EmployersPage() {
   return (
-    <div className="py-8">
+    <div>
       <Hero
+        image="/brand/employer.png"
+        scrim="dark"
         eyebrow="For employers"
         title="Hire vetted early-career talent, ready to grow with you."
         subtitle="Runwayz helps you post internships and jobs, and reach a pipeline of early-career talent vetted for the skills that actually predict success on the job."
@@ -66,7 +68,7 @@ export default function EmployersPage() {
       </Hero>
 
       {/* The hiring gap */}
-      <section className="mt-20 border-t border-border pt-12">
+      <section className="mt-12">
         <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">The hiring gap</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg1">
           A resume tells you where someone has been. It doesn&apos;t tell you who will show up.
