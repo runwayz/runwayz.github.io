@@ -10,14 +10,16 @@ const COLUMNS = [
       // { label: "Workforce Boards", href: "/workforce-boards" }, // hidden for now
       { label: "Employers", href: "/employers" },
       { label: "Institutions & Schools", href: "/education" },
+      { label: "Talent", href: "/talent" },
     ],
   },
   {
-    heading: "Product",
+    heading: "Site",
     links: [
       // { label: "Platform", href: "/platform" }, // hidden for now — pages still live at /platform
-      { label: "Talent", href: "/talent" },
       { label: "Get a demo", href: "/contact" },
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
     ],
   },
   // Resources (Case Studies + Blog) hidden for the pre-release; restore when ready.
