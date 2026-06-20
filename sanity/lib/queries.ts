@@ -46,3 +46,30 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
 }`
 
 export const caseStudySlugsQuery = `*[_type == "caseStudy" && defined(slug.current)]{ "slug": slug.current }`
+
+// Help center. Categories (each with their articles) power the /help index and
+// the per-article sidebar; the slug queries drive the article template.
+export const helpCategoriesQuery = `*[_type == "helpCategory"] | order(order asc, title asc){
+  _id,
+  title,
+  "slug": slug.current,
+  description,
+  "articles": *[_type == "helpArticle" && references(^._id)] | order(order asc, title asc){
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt
+  }
+}`
+
+export const helpArticleBySlugQuery = `*[_type == "helpArticle" && slug.current == $slug][0]{
+  _id,
+  title,
+  "slug": slug.current,
+  excerpt,
+  updatedAt,
+  body,
+  "category": category->{title, "slug": slug.current}
+}`
+
+export const helpArticleSlugsQuery = `*[_type == "helpArticle" && defined(slug.current)]{ "slug": slug.current }`

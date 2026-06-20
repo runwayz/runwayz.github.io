@@ -101,6 +101,28 @@ GitHub Pages → Run workflow**).
 To **unpublish/hide** an item, open it and use the **⋯ menu → Unpublish** (then
 rebuild). Deleting works the same way but is permanent.
 
+### Help Center (`/help`)
+
+The help center is a third content type, edited the same way:
+
+- **Help Category** — a grouping (e.g. "Getting Started"). `order` sets its
+  position. Create these first.
+- **Help Article** — the actual article. Pick a **Category**, write the **body**,
+  and Publish. The body's **H2/H3 headings automatically build the "On this page"
+  table of contents**, and `Last updated` shows the `updatedAt` date.
+
+Articles appear at `/help/<slug>`, grouped by category on `/help`. There's a
+starter **"Welcome to the Help Center"** article you can copy as a template.
+
+**Search** is built by [Pagefind](https://pagefind.app) during deploy (the
+`npx pagefind --site out` step in the workflow indexes the published articles).
+So search only works on the **built/deployed** site — under `npm run dev` the
+search box shows a "not available locally" note. To test it locally, run
+`npm run build && npm run search:build` and serve the `out/` directory.
+
+> The don't-empty-a-type rule applies here too: keep at least one published
+> **Help Article**, or the build fails.
+
 ## Deploy the site (GitHub Pages)
 
 The repo is `runwayz/runwayz.github.io`, so the site publishes to

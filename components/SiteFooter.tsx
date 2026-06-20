@@ -18,6 +18,7 @@ const COLUMNS = [
     links: [
       // { label: "Platform", href: "/platform" }, // hidden for now — pages still live at /platform
       { label: "Get a demo", href: "/contact" },
+      { label: "Help Center", href: "/help" },
       { label: "Terms", href: "/terms" },
       { label: "Privacy", href: "/privacy" },
     ],

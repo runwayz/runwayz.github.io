@@ -52,6 +52,10 @@ jobs:
           # Stays in CI — never shipped to the browser. Set as a repo Secret.
           SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
 
+      # Build the client-side search index over the exported HTML (writes
+      # out/pagefind/). Powers the Help Center search; no server needed.
+      - run: npx pagefind --site out
+
       # Stop GitHub Pages' Jekyll from stripping the _next/ asset directory.
       - run: touch out/.nojekyll
 

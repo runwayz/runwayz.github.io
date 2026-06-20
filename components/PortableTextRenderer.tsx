@@ -1,6 +1,7 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import type { SanityImageSource } from '@sanity/image-url'
 import { urlFor } from '@/sanity/lib/image'
+import { slugify, blockText } from '@/lib/toc'
 import { HubSpotForm } from './HubSpotForm'
 
 // Maps each block type from Sanity to YOUR components — this is where the
@@ -8,8 +9,16 @@ import { HubSpotForm } from './HubSpotForm'
 // not a generic blockquote; an inline form becomes a real HubSpot embed.
 const components: PortableTextComponents = {
   block: {
-    h2: ({ children }) => <h2 className="mt-12 text-2xl font-semibold tracking-tight">{children}</h2>,
-    h3: ({ children }) => <h3 className="mt-8 text-xl font-semibold tracking-tight">{children}</h3>,
+    h2: ({ children, value }) => (
+      <h2 id={slugify(blockText(value))} className="mt-12 scroll-mt-24 text-2xl font-semibold tracking-tight">
+        {children}
+      </h2>
+    ),
+    h3: ({ children, value }) => (
+      <h3 id={slugify(blockText(value))} className="mt-8 scroll-mt-24 text-xl font-semibold tracking-tight">
+        {children}
+      </h3>
+    ),
     normal: ({ children }) => <p className="mt-5 leading-7 text-fg2">{children}</p>,
     blockquote: ({ children }) => (
       <blockquote className="mt-6 border-l-4 border-accent pl-4 italic text-fg1">{children}</blockquote>
