@@ -5,7 +5,7 @@ import { urlFor } from "@/sanity/lib/image";
 import type { SanityImageSource } from "@sanity/image-url";
 
 export const metadata = { title: "Blog · Runwayz" };
-export const revalidate = 60; // refresh from the CMS at most once a minute
+// Statically generated at build time; refreshed via the Sanity rebuild webhook.
 
 type Post = {
   _id: string;

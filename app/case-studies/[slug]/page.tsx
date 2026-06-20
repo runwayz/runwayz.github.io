@@ -5,7 +5,11 @@ import { urlFor } from "@/sanity/lib/image";
 import { Body } from "@/components/PortableTextRenderer";
 import type { SanityImageSource } from "@sanity/image-url";
 
-export const revalidate = 60;
+// Static export: pre-render one page per known slug at build time; unknown
+// slugs 404 (no server to render them on demand). Content refreshes when the
+// Sanity webhook triggers a rebuild.
+export const dynamicParams = false;
+export const revalidate = 0;
 
 type CaseStudy = {
   title: string;

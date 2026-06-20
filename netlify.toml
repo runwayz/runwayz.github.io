@@ -1,7 +1,0 @@
-[build]
-  command = "npm run build"
-
-# The official adapter runs Next.js fully on Netlify (SSR, ISR, image
-# optimization). Netlify auto-installs it; listing it is explicit + safe.
-[[plugins]]
-  package = "@netlify/plugin-nextjs"

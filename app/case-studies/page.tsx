@@ -5,7 +5,7 @@ import { urlFor } from "@/sanity/lib/image";
 import type { SanityImageSource } from "@sanity/image-url";
 
 export const metadata = { title: "Case Studies · Runwayz" };
-export const revalidate = 60;
+// Statically generated at build time; refreshed via the Sanity rebuild webhook.
 
 type CaseStudy = {
   _id: string;
