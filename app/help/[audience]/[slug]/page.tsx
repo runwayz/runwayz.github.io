@@ -1,19 +1,20 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { sanityFetch } from "@/sanity/lib/client";
 import {
-  helpArticleBySlugQuery,
-  helpArticleSlugsQuery,
-  helpCategoriesQuery,
+  helpArticleByAudienceSlugQuery,
+  helpArticleParamsQuery,
+  helpCategoriesByAudienceQuery,
 } from "@/sanity/lib/queries";
 import { Body } from "@/components/PortableTextRenderer";
 import { HelpNav } from "@/components/HelpNav";
 import { ArticleToc } from "@/components/ArticleToc";
 import { extractToc } from "@/lib/toc";
+import { AUDIENCES, isAudience } from "@/lib/help";
 
-// Static export: pre-render one page per known slug at build time; unknown
-// slugs 404 (no server to render them on demand). Content refreshes when the
-// Sanity webhook triggers a rebuild.
+// Static export: pre-render one page per known (audience, slug); unknown ones
+// 404. Content refreshes when the Sanity webhook triggers a rebuild.
 export const dynamicParams = false;
 
 type Article = {
@@ -32,33 +33,38 @@ type NavCategory = {
 };
 
 export async function generateStaticParams() {
-  const slugs = await sanityFetch<{ slug: string }[]>(helpArticleSlugsQuery);
-  return slugs.map((s) => ({ slug: s.slug }));
+  const rows = await sanityFetch<{ slug: string; audience: string }[]>(helpArticleParamsQuery);
+  return rows
+    .filter((r) => r.slug && isAudience(r.audience))
+    .map((r) => ({ audience: r.audience, slug: r.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ audience: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const article = await sanityFetch<Article | null>(helpArticleBySlugQuery, { slug }, null);
+  const { audience, slug } = await params;
+  const article = await sanityFetch<Article | null>(
+    helpArticleByAudienceSlugQuery,
+    { audience, slug },
+    null,
+  );
   if (!article) return { title: "Help · Runwayz" };
-  return {
-    title: `${article.title} · Help · Runwayz`,
-    description: article.excerpt,
-  };
+  return { title: `${article.title} · Help · Runwayz`, description: article.excerpt };
 }
 
 export default async function HelpArticlePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ audience: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { audience, slug } = await params;
+  if (!isAudience(audience)) notFound();
+
   const [article, categories] = await Promise.all([
-    sanityFetch<Article | null>(helpArticleBySlugQuery, { slug }, null),
-    sanityFetch<NavCategory[]>(helpCategoriesQuery),
+    sanityFetch<Article | null>(helpArticleByAudienceSlugQuery, { audience, slug }, null),
+    sanityFetch<NavCategory[]>(helpCategoriesByAudienceQuery, { audience }),
   ]);
 
   if (!article) notFound();
@@ -68,13 +74,16 @@ export default async function HelpArticlePage({
   return (
     <div className="lg:grid lg:grid-cols-[210px_minmax(0,1fr)_190px] lg:gap-10">
       <aside className="mb-10 lg:mb-0 lg:sticky lg:top-24 lg:self-start">
-        <HelpNav categories={categories} currentSlug={slug} />
+        <HelpNav audience={audience} categories={categories} currentSlug={slug} />
       </aside>
 
       <article data-pagefind-body className="min-w-0 max-w-2xl">
-        {article.category?.title && (
-          <p className="text-xs uppercase tracking-widest text-fg3">{article.category.title}</p>
-        )}
+        <nav className="text-xs uppercase tracking-widest text-fg3">
+          <Link href={`/help/${audience}`} className="hover:text-fg1">
+            {AUDIENCES[audience].label}
+          </Link>
+          {article.category?.title && <span> · {article.category.title}</span>}
+        </nav>
         <h1 className="mt-2 text-[2.2rem] font-semibold tracking-tight">{article.title}</h1>
         {article.excerpt && <p className="mt-3 text-lg text-fg2">{article.excerpt}</p>}
 

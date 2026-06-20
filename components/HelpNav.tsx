@@ -1,21 +1,24 @@
 import Link from 'next/link'
+import { AUDIENCES, type AudienceSlug } from '@/lib/help'
 
 type NavArticle = { _id: string; title: string; slug: string }
 type NavCategory = { _id: string; title: string; slug: string; articles?: NavArticle[] }
 
-// Left sidebar on help article pages: categories → their articles, current
-// article highlighted.
+// Left sidebar on help article pages: categories → their articles for the
+// current audience, current article highlighted.
 export function HelpNav({
+  audience,
   categories,
   currentSlug,
 }: {
+  audience: AudienceSlug
   categories: NavCategory[]
   currentSlug?: string
 }) {
   return (
     <nav aria-label="Help topics" className="text-sm">
-      <Link href="/help" className="mb-6 block text-xs font-semibold uppercase tracking-wide text-fg3 hover:text-fg1">
-        ← All help topics
+      <Link href={`/help/${audience}`} className="mb-6 block text-xs font-semibold uppercase tracking-wide text-fg3 hover:text-fg1">
+        ← {AUDIENCES[audience].label}
       </Link>
       <div className="space-y-6">
         {categories.map((cat) => (
@@ -27,7 +30,7 @@ export function HelpNav({
                 return (
                   <li key={a._id}>
                     <Link
-                      href={`/help/${a.slug}`}
+                      href={`/help/${audience}/${a.slug}`}
                       aria-current={active ? 'page' : undefined}
                       className={`-ml-px block border-l pl-4 ${
                         active

@@ -7,6 +7,20 @@ export const helpCategory = defineType({
   fields: [
     defineField({ name: 'title', type: 'string', validation: (r) => r.required() }),
     defineField({
+      name: 'audience',
+      title: 'Audience',
+      type: 'string',
+      description: 'Which help section this category (and its articles) belongs to.',
+      options: {
+        list: [
+          { title: 'Talent', value: 'talent' },
+          { title: 'Organizations (Partners)', value: 'partners' },
+        ],
+        layout: 'radio',
+      },
+      validation: (r) => r.required(),
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: { source: 'title', maxLength: 96 },
@@ -28,6 +42,10 @@ export const helpCategory = defineType({
     { name: 'manual', title: 'Manual order', by: [{ field: 'order', direction: 'asc' }] },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'description' },
+    select: { title: 'title', audience: 'audience' },
+    prepare: ({ title, audience }) => ({
+      title,
+      subtitle: audience === 'partners' ? 'Organizations' : audience === 'talent' ? 'Talent' : 'No audience set',
+    }),
   },
 })

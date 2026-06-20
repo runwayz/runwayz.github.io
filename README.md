@@ -103,16 +103,24 @@ rebuild). Deleting works the same way but is permanent.
 
 ### Help Center (`/help`)
 
-The help center is a third content type, edited the same way:
+The help center is split into two **separately-managed audiences**:
 
-- **Help Category** — a grouping (e.g. "Getting Started"). `order` sets its
-  position. Create these first.
-- **Help Article** — the actual article. Pick a **Category**, write the **body**,
-  and Publish. The body's **H2/H3 headings automatically build the "On this page"
-  table of contents**, and `Last updated` shows the `updatedAt` date.
+- `/help` — a landing page with search and two buttons (Talent / Organizations).
+- `/help/talent` and `/help/partners` — each a self-contained section with its
+  own categories and articles. Article URLs are `/help/<audience>/<slug>`.
 
-Articles appear at `/help/<slug>`, grouped by category on `/help`. There's a
-starter **"Welcome to the Help Center"** article you can copy as a template.
+Edited in Studio like the other content types:
+
+- **Help Category** — a grouping (e.g. "Getting Started"). **Set its `Audience`**
+  (Talent or Organizations) — that's what puts the category and all its articles
+  in the right section. `order` sets its position. Create these first.
+- **Help Article** — the actual article. Pick a **Category** (which determines its
+  audience), write the **body**, and Publish. The body's **H2/H3 headings build
+  the "On this page" table of contents**, and `Last updated` shows `updatedAt`.
+
+The audience lives on the **category**, so to move content between sections you
+change the category's audience (or move the article to a category in the other
+section). Each section has a starter "Welcome" article to copy as a template.
 
 **Search** is built by [Pagefind](https://pagefind.app) during deploy (the
 `npx pagefind --site out` step in the workflow indexes the published articles).

@@ -47,9 +47,10 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
 
 export const caseStudySlugsQuery = `*[_type == "caseStudy" && defined(slug.current)]{ "slug": slug.current }`
 
-// Help center. Categories (each with their articles) power the /help index and
-// the per-article sidebar; the slug queries drive the article template.
-export const helpCategoriesQuery = `*[_type == "helpCategory"] | order(order asc, title asc){
+// Help center. Split by audience ("talent" | "partners"), stored on each
+// category. Categories (with their articles) power a section index + the
+// per-article sidebar; the params query drives static generation.
+export const helpCategoriesByAudienceQuery = `*[_type == "helpCategory" && audience == $audience] | order(order asc, title asc){
   _id,
   title,
   "slug": slug.current,
@@ -62,14 +63,18 @@ export const helpCategoriesQuery = `*[_type == "helpCategory"] | order(order asc
   }
 }`
 
-export const helpArticleBySlugQuery = `*[_type == "helpArticle" && slug.current == $slug][0]{
+export const helpArticleByAudienceSlugQuery = `*[_type == "helpArticle" && slug.current == $slug && category->audience == $audience][0]{
   _id,
   title,
   "slug": slug.current,
   excerpt,
   updatedAt,
   body,
-  "category": category->{title, "slug": slug.current}
+  "category": category->{title, "slug": slug.current, audience}
 }`
 
-export const helpArticleSlugsQuery = `*[_type == "helpArticle" && defined(slug.current)]{ "slug": slug.current }`
+// All (audience, slug) pairs for generateStaticParams on /help/[audience]/[slug].
+export const helpArticleParamsQuery = `*[_type == "helpArticle" && defined(slug.current) && defined(category->audience)]{
+  "slug": slug.current,
+  "audience": category->audience
+}`
