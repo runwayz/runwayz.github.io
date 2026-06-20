@@ -1,14 +1,24 @@
 // Centralized Sanity environment config. Values come from .env.local —
 // see .env.example. Defaults keep `npm run dev`/`build` from crashing before
 // a real project is connected (fetches simply return empty until then).
+// Read BOTH prefixes: the Next.js app build inlines `NEXT_PUBLIC_*`, while the
+// standalone Studio build (`npx sanity deploy`, via Vite) only inlines
+// `SANITY_STUDIO_*`. Setting just one prefix leaves the other build with the
+// 'placeholder' fallback — which makes a deployed Studio report "not registered".
 export const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-10-01'
+  process.env.NEXT_PUBLIC_SANITY_API_VERSION ||
+  process.env.SANITY_STUDIO_API_VERSION ||
+  '2024-10-01'
 
 export const dataset =
-  process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+  process.env.NEXT_PUBLIC_SANITY_DATASET ||
+  process.env.SANITY_STUDIO_DATASET ||
+  'production'
 
 export const projectId =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'placeholder'
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
+  process.env.SANITY_STUDIO_PROJECT_ID ||
+  'placeholder'
 
 // Default HubSpot portal id (per-form ids are set in the CMS).
 export const hubspotPortalId =
