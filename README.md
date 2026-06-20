@@ -68,7 +68,38 @@ npx sanity dataset import sanity/seed.ndjson production   # seed: 1 author, 1 po
 npx sanity deploy            # publishes Studio to runwayz.sanity.studio
 ```
 
-Invite the client there (Manage → Members). Free tier = 3 users.
+Already deployed and live at **https://runwayz.sanity.studio**. Re-run the
+command after changing schemas to push the update.
+
+## Editing content (for non-technical users)
+
+Editors never touch code. They work entirely in the hosted Studio:
+
+1. **Go to https://runwayz.sanity.studio** and log in. (First, an admin must
+   invite them: **sanity.io/manage → project → Members → Invite** — or share
+   access from inside the Studio. The free plan allows a small team; everyone
+   needs a free Sanity account, sign-in by Google/GitHub/email.)
+2. In the left sidebar pick a content type — **Blog Post** or **Case Study**.
+3. **Edit** an existing item by clicking it, or **create** a new one with the
+   **+** (pencil) button at the top of the list.
+4. Fill in the fields — title, slug (auto-fills from the title), cover image,
+   author, and the body. The body is a rich-text editor: headings, bold/italic,
+   links, images, pull quotes, and HubSpot forms.
+5. Click **Publish** (bottom-right). **This is the important step** — unpublished
+   work stays a private *draft* and never appears on the live site.
+
+**When does it show up on the site?** The site is rebuilt from published content.
+Once the publish webhook is configured (see *Automatic content updates* below),
+publishing rebuilds the site automatically in ~1–2 minutes. Until then, a
+developer has to trigger a rebuild (push to `master`, or **Actions → Deploy to
+GitHub Pages → Run workflow**).
+
+> **Don't delete the last item of a type.** Because pages are statically
+> generated, the build fails if **Blog Post** or **Case Study** has zero
+> published documents. Always keep at least one of each published.
+
+To **unpublish/hide** an item, open it and use the **⋯ menu → Unpublish** (then
+rebuild). Deleting works the same way but is permanent.
 
 ## Deploy the site (GitHub Pages)
 
