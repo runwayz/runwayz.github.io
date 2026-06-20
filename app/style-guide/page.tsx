@@ -25,7 +25,7 @@ const SEMANTIC = [
   { role: "Border", v: "--border", light: "#DDE0E7", dark: "#272D3C" },
   { role: "Text — primary", v: "--fg1", light: "#1F2430", dark: "#F5ECD7" },
   { role: "Text — secondary", v: "--fg2", light: "#4A5264", dark: "#DDE0E7" },
-  { role: "Text — tertiary", v: "--fg3", light: "#6E7688", dark: "#7A8294" },
+  { role: "Text — tertiary", v: "--fg3", light: "#5F6678", dark: "#8A92A3" },
   { role: "Accent (interactive)", v: "--accent", light: "#14609F", dark: "#7DB8E4" },
   { role: "Success", v: "--success", light: "#1F6C52", dark: "#5CB394" },
   { role: "Warning", v: "--warning", light: "#A86A10", dark: "#F4A02C" },

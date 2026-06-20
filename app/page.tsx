@@ -103,10 +103,7 @@ export default function Home() {
 
             {/* Two panels — 60px below the CTA buttons, sitting on top of the hero */}
             <div className="relative z-10 mt-[60px] grid gap-6 md:grid-cols-2">
-              <Link
-                href="/talent"
-                className="group rounded-2xl border border-border bg-surface p-8 hover:border-accent"
-              >
+              <div className="rounded-2xl border border-border bg-surface p-8">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">
                   For Talent
                 </p>
@@ -117,10 +114,13 @@ export default function Home() {
                   Training, credentials, and jobs, surfaced through the union,
                   program, or school you already belong to.
                 </p>
-                <span className="mt-4 inline-block text-sm font-medium text-accent group-hover:underline">
+                <Link
+                  href="/talent"
+                  className="mt-4 inline-block text-sm font-medium text-accent hover:underline"
+                >
                   Explore for talent →
-                </span>
-              </Link>
+                </Link>
+              </div>
 
               <div className="rounded-2xl border border-border bg-surface p-8">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fg3">
@@ -132,12 +132,12 @@ export default function Home() {
                 <p className="mt-2 text-fg2">
                   Bring Runwayz to the people you serve:
                 </p>
-                <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
                   {SEGMENTS.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="rounded-lg px-3 py-2 text-sm font-medium text-fg1 hover:bg-raised"
+                      className="text-sm font-medium text-accent hover:underline"
                     >
                       {s.label} →
                     </Link>

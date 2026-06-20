@@ -20,7 +20,7 @@
 
   --fg1: #1f2430; /* charcoal-900 — body */
   --fg2: #4a5264; /* charcoal-600 — secondary */
-  --fg3: #6e7688; /* charcoal-500 — tertiary */
+  --fg3: #5f6678; /* charcoal-550 — tertiary (AA-contrast on cream + white) */
   --fg-placeholder: #7a8294; /* charcoal-400 */
 
   --accent: #14609f; /* blue-700 — interactive */
@@ -45,7 +45,7 @@
 
   --fg1: #f5ecd7; /* cream — preserves brand, not white */
   --fg2: #dde0e7; /* charcoal-200 */
-  --fg3: #7a8294; /* charcoal-400 */
+  --fg3: #8a92a3; /* charcoal-350 — AA-contrast on midnight surface + page */
   --fg-placeholder: #6e7688; /* charcoal-500 */
 
   --accent: #7db8e4; /* blue-200 */
