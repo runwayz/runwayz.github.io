@@ -76,9 +76,13 @@ const BLOCKS: Block[] = [
   {
     type: "ul",
     items: [
-      "you are 17 years of age or older, or",
-      "you are under 17 and are accessing Runwayz through an authorized school, district, workforce organization, or other approved institutional program with all permissions required by applicable law.",
+      "you are 17 years of age or older; or",
+      "you are 14, 15, or 16 years of age and are accessing Runwayz through an authorized school, district, workforce organization, or other approved institutional program with all permissions required by applicable law.",
     ],
+  },
+  {
+    type: "p",
+    text: "Runwayz is not available to anyone under 14 years of age, including through institutional programs.",
   },
   { type: "p", text: "By using Runwayz, you represent that:" },
   {
@@ -101,7 +105,7 @@ const BLOCKS: Block[] = [
   },
   {
     type: "p",
-    text: "If you are an educator, administrator, employer, workforce leader, or other representative creating or facilitating access for users under 17, you represent and warrant that:",
+    text: "If you are an educator, administrator, employer, workforce leader, or other representative creating or facilitating access for users under 17 and in no case under 14, you represent and warrant that:",
   },
   {
     type: "ul",
@@ -441,7 +445,7 @@ export default function TermsPage() {
     <PageTemplate
       eyebrow="Legal"
       title="Terms of Use"
-      subtitle="Effective Date: June 19, 2026."
+      subtitle="Effective Date: June 23, 2026."
       closingCta={false}
     >
       <LegalDoc blocks={BLOCKS} />

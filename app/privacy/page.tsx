@@ -422,15 +422,11 @@ const BLOCKS: Block[] = [
   { type: "h3", text: "Intended Audience" },
   {
     type: "p",
-    text: "Runwayz is generally intended for older teens, emerging adults, job seekers, and career explorers. In limited cases, younger users may access Runwayz through authorized school, district, or institutional programs where legally permitted and subject to applicable agreements.",
+    text: "Runwayz is intended for users 17 and older, and for users 14, 15, or 16 who access Runwayz through an authorized school, district, or institutional program with required consents.",
   },
   {
     type: "p",
-    text: "Runwayz is not directed to children under the age of 13, and we do not knowingly collect personal information directly from children under 13 except where participation is facilitated through an authorized school, district, or other institution and permitted by applicable law.",
-  },
-  {
-    type: "p",
-    text: "If we learn that we have collected personal information directly from a child under 13 without appropriate authorization or legal basis, we will take steps to delete that information.",
+    text: "Runwayz is not directed to children under 14, and we do not knowingly collect personal information from anyone under 14, including through institutional partners. If we learn that we have collected personal information from a user under 14, we will take steps to delete it.",
   },
   { type: "h3", text: "Student and Institutional Use" },
   { type: "p", text: "Runwayz may be used by:" },
@@ -588,7 +584,7 @@ export default function PrivacyPage() {
     <PageTemplate
       eyebrow="Legal"
       title="Privacy Policy"
-      subtitle="Effective Date: April 28, 2026."
+      subtitle="Effective Date: June 23, 2026."
       closingCta={false}
     >
       <LegalDoc blocks={BLOCKS} />
