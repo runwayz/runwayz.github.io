@@ -24,6 +24,14 @@ const components: PortableTextComponents = {
       <blockquote className="mt-6 border-l-4 border-accent pl-4 italic text-fg1">{children}</blockquote>
     ),
   },
+  list: {
+    bullet: ({ children }) => <ul className="mt-5 ml-6 list-disc space-y-2 text-fg2">{children}</ul>,
+    number: ({ children }) => <ol className="mt-5 ml-6 list-decimal space-y-2 text-fg2">{children}</ol>,
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="leading-7">{children}</li>,
+    number: ({ children }) => <li className="leading-7">{children}</li>,
+  },
   marks: {
     link: ({ children, value }) => (
       <a href={value?.href} className="font-medium text-accent underline underline-offset-2">
