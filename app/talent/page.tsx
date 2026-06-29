@@ -59,7 +59,7 @@ export default function TalentPage() {
       >
         <div className="flex flex-wrap gap-4">
           <a
-            href="https://platform.runwayz.com/talent/signup?step=form"
+            href="https://app.runwayz.com/talent/signup?step=form"
             className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
             Create your Account
@@ -111,7 +111,7 @@ export default function TalentPage() {
         <RecommendedCareers className="mt-8" />
         <div className="mt-8 flex justify-center">
           <a
-            href="https://platform.runwayz.com/talent/signup?step=form"
+            href="https://app.runwayz.com/talent/signup?step=form"
             className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
             Create your Account
@@ -198,7 +198,7 @@ export default function TalentPage() {
         </p>
         <div className="mt-8 flex justify-center">
           <Link
-            href="https://platform.runwayz.com/talent/signup?step=form"
+            href="https://app.runwayz.com/talent/signup?step=form"
             className="inline-block rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-contrast hover:bg-accent/90"
           >
             Create your Account
