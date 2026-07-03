@@ -18,17 +18,17 @@ const COLUMNS = [
     links: [
       // { label: "Platform", href: "/platform" }, // hidden for now — pages still live at /platform
       { label: "Get a demo", href: "/contact" },
+      { label: "Blog", href: "/blog" },
       { label: "Help Center", href: "/help" },
       { label: "Terms", href: "/terms" },
       { label: "Privacy", href: "/privacy" },
     ],
   },
-  // Resources (Case Studies + Blog) hidden for the pre-release; restore when ready.
+  // Case Studies hidden for the pre-release; restore when ready.
   // {
   //   heading: "Resources",
   //   links: [
   //     { label: "Case Studies", href: "/case-studies" },
-  //     { label: "Blog", href: "/blog" },
   //   ],
   // },
 ];
