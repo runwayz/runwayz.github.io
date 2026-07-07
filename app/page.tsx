@@ -28,7 +28,7 @@ const TALENT_STEPS = [
 // light and dark mode. Add more by giving a partner a `logo` path.
 const PARTNERS: { name: string; logo: string }[] = [
   { name: "United Brotherhood of Carpenters", logo: "/brand/partners/carpenters-union.png" },
-  { name: "Chemical Coaters Association International", logo: "/brand/partners/chemical-coaters.png" },
+  { name: "Industrial Finishing & Coating Association", logo: "/brand/partners/ifca.png" },
   { name: "NCCTE", logo: "/brand/partners/nccte.png" },
   { name: "San Antonio", logo: "/brand/partners/san-antonio.png" },
   { name: "Build Chicago", logo: "/brand/partners/build-chicago.png" },
@@ -38,9 +38,9 @@ const PARTNERS: { name: string; logo: string }[] = [
 
 const SPOTLIGHTS = [
   {
-    name: "Chemical Coaters Association International",
-    logo: "/brand/partners/chemical-coaters.png",
-    body: "CCAI is introducing a new generation to careers in finishing and coating, and giving its member companies modern tools to engage future talent.",
+    name: "Industrial Finishing & Coating Association",
+    logo: "/brand/partners/ifca.png",
+    body: "IFCA is introducing a new generation to careers in finishing and coating, and giving its member companies modern tools to engage future talent.",
     href: "/associations",
     linkLabel: "Learn about Runwayz for Trade Associations",
   },
