@@ -302,7 +302,7 @@ export default function AssociationsPage() {
         </div>
       </section>
 
-      {/* Pull quote — CCAI, full-bleed with background image */}
+      {/* Pull quote — IFCA, full-bleed with background image */}
       <section className="relative left-1/2 mt-20 w-screen -translate-x-1/2 overflow-hidden">
         <Image src="/brand/associations-pullquote-3.png" alt="" fill sizes="100vw" className="object-cover object-center" />
         <div aria-hidden className="absolute inset-0 bg-black/55" />
@@ -323,7 +323,7 @@ export default function AssociationsPage() {
               />
               <figcaption className="text-left text-sm text-white/90">
                 <span className="block font-semibold text-white">Anne Goyer</span>
-                Executive Director, The Chemical Coaters Association International (CCAI)
+                Executive Director, Industrial Finishing & Coating Association (IFCA)
               </figcaption>
             </div>
             <a

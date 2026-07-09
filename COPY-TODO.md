@@ -57,7 +57,7 @@ quiz CTAs) are already applied.
 1. **Travis Williams quote** (`unions:301-315`) — confirm attribution + that
    "CMRCC … Central Midwest Carpenters" is the correct org name (photo newly
    added).
-2. **Home "Featured partners"** spotlights/logos (`page.tsx:30-54`): CCAI &
+2. **Home "Featured partners"** spotlights/logos (`page.tsx:30-54`): IFCA &
    Carpenters look confirmed; verify "San Antonio," "Build Chicago," "Howard
    County" are signed partners vs aspirational.
 3. **External signup links** (`platform.runwayz.com/talent/signup?step=form`)

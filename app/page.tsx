@@ -25,10 +25,12 @@ const TALENT_STEPS = [
 ];
 
 // Partner logos render on white chips so full-color logos stay legible in both
-// light and dark mode. Add more by giving a partner a `logo` path.
-const PARTNERS: { name: string; logo: string }[] = [
+// light and dark mode. Add more by giving a partner a `logo` path. Stacked
+// logos with lots of internal whitespace can set `logoClass` to bump their
+// height so they read at the same visual weight as the wide logos.
+const PARTNERS: { name: string; logo: string; logoClass?: string }[] = [
   { name: "United Brotherhood of Carpenters", logo: "/brand/partners/carpenters-union.png" },
-  { name: "Chemical Coaters Association International", logo: "/brand/partners/chemical-coaters.png" },
+  { name: "Industrial Finishing & Coating Association", logo: "/brand/partners/ifca.png", logoClass: "max-h-[6rem]" },
   { name: "NCCTE", logo: "/brand/partners/nccte.png" },
   { name: "San Antonio", logo: "/brand/partners/san-antonio.png" },
   { name: "Build Chicago", logo: "/brand/partners/build-chicago.png" },
@@ -36,11 +38,19 @@ const PARTNERS: { name: string; logo: string }[] = [
   { name: "Chicago Hope Academy", logo: "/brand/partners/chicago-hope-academy.png" },
 ];
 
-const SPOTLIGHTS = [
+const SPOTLIGHTS: {
+  name: string;
+  logo: string;
+  logoClass?: string;
+  body: string;
+  href: string;
+  linkLabel: string;
+}[] = [
   {
-    name: "Chemical Coaters Association International",
-    logo: "/brand/partners/chemical-coaters.png",
-    body: "CCAI is introducing a new generation to careers in finishing and coating, and giving its member companies modern tools to engage future talent.",
+    name: "Industrial Finishing & Coating Association",
+    logo: "/brand/partners/ifca.png",
+    logoClass: "max-h-24",
+    body: "IFCA is introducing a new generation to careers in finishing and coating, and giving its member companies modern tools to engage future talent.",
     href: "/associations",
     linkLabel: "Learn about Runwayz for Trade Associations",
   },
@@ -165,7 +175,7 @@ export default function Home() {
               <img
                 src={p.logo}
                 alt={p.name}
-                className="max-h-[4.5rem] w-auto object-contain"
+                className={`w-auto object-contain ${p.logoClass ?? "max-h-[4.5rem]"}`}
               />
             </div>
           ))}
@@ -250,9 +260,11 @@ export default function Home() {
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/70">
                 Partner Spotlight
               </p>
-              <div className="mt-4 inline-flex items-center justify-center rounded-lg bg-white p-3">
+              {/* Fixed-height chip so every spotlight logo box lines up, no
+                  matter how tall the logo inside is. */}
+              <div className="mt-4 inline-flex h-28 items-center justify-center rounded-lg bg-white px-5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={s.logo} alt={s.name} className="h-[72px] w-auto max-w-[270px] object-contain" />
+                <img src={s.logo} alt={s.name} className={`w-auto max-w-[270px] object-contain ${s.logoClass ?? "max-h-[72px]"}`} />
               </div>
               <h3 className="mt-5 text-xl font-bold tracking-tight text-white">{s.name}</h3>
               <p className="mt-2 text-sm leading-[1.55] text-white/75">{s.body}</p>
