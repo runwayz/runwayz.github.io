@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cabin } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
 
 // Runs before paint to set the theme class — prevents a flash of the wrong mode.
 const noFlashScript = `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`;
+
+// Google tag (gtag.js)
+const gtagScript = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-HN9Z8V2CB1');`;
 
 export default function RootLayout({
   children,
@@ -50,6 +58,11 @@ export default function RootLayout({
         </main>
         <SiteFooter />
       </body>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-HN9Z8V2CB1" />
+      <Script
+        id="google-analytics"
+        dangerouslySetInnerHTML={{ __html: gtagScript }}
+      />
     </html>
   );
 }
