@@ -1,26 +1,6 @@
 import { defineType, defineField, type SlugValidationContext } from 'sanity'
 import { apiVersion } from '../env'
-
-// Top-level URLs already owned by hand-built routes in app/. A Page with no
-// parent route can't take one of these slugs or it would shadow a real page.
-const RESERVED_TOP_LEVEL = [
-  'associations',
-  'blog',
-  'case-studies',
-  'contact',
-  'education',
-  'employers',
-  'help',
-  'platform',
-  'privacy',
-  'studio',
-  'style-guide',
-  'talent',
-  'terms',
-  'unions',
-  'unions-associations',
-  'workforce-boards',
-]
+import { RESERVED_TOP_LEVEL, STATIC_PATHS } from '../../lib/reservedPaths'
 
 // Slug uniqueness scoped to the parent route: two pages may share a slug as
 // long as they live under different parents (the full URL is what must be
@@ -58,12 +38,28 @@ export const page = defineType({
       type: 'slug',
       description: 'The last URL segment. Full URL: /<parent route>/<slug>, or /<slug> with no parent.',
       options: { source: 'title', maxLength: 96, isUnique: isUniqueWithinParent },
+      // The FULL resolved path (parent route slug + page slug) must not shadow
+      // a hand-built page: /talent at the top level, /platform/partners one
+      // level deep, etc. Lists live in lib/reservedPaths.ts, shared with the
+      // build-time filter in app/[...slug].
       validation: (r) =>
-        r.required().custom((slug, context) => {
+        r.required().custom(async (slug, context) => {
           const current = slug?.current
-          const hasParent = Boolean((context.document?.parent as { _ref?: string } | undefined)?._ref)
-          if (current && !hasParent && RESERVED_TOP_LEVEL.includes(current)) {
-            return `"/${current}" is already a hand-built page on the site. Pick a different slug or set a parent route.`
+          if (!current) return true
+          const parentRef = (context.document?.parent as { _ref?: string } | undefined)?._ref
+          if (!parentRef) {
+            if (RESERVED_TOP_LEVEL.includes(current)) {
+              return `"/${current}" is already a hand-built page on the site. Pick a different slug or set a parent route.`
+            }
+            return true
+          }
+          const client = context.getClient({ apiVersion })
+          const parentSlug = await client.fetch<string | null>(
+            '*[_id in [$id, "drafts." + $id]][0].slug.current',
+            { id: parentRef },
+          )
+          if (parentSlug && STATIC_PATHS.includes(`${parentSlug}/${current}`)) {
+            return `"/${parentSlug}/${current}" is already a hand-built page on the site. Pick a different slug.`
           }
           return true
         }),

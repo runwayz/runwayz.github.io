@@ -144,12 +144,20 @@ page template (`components/PageTemplate.tsx`), rendered by `app/[...slug]`:
   **Parent route** field picks an existing route **or creates a new one
   inline**. The URL becomes `/<route>/<slug>` (e.g. route `employers` + slug
   `construction` → `/employers/construction/`). Leave it empty for a top-level
-  URL (`/<slug>`).
+  URL (`/<slug>`). The hand-built site sections (talent, employers,
+  workforce-boards, unions-associations, education, platform) exist as
+  **built-in routes**: editors can nest pages under them but cannot edit or
+  delete them (they are owned by code — see `lib/builtInRoutes.ts`; add an
+  entry there plus a seed line when a new section ships).
 
-Guardrails: top-level slugs that would shadow a hand-built page (e.g.
-`/talent`, `/contact`) are rejected in Studio, as are the parent routes
-`blog`, `case-studies`, `help`, and `studio` (those namespaces belong to other
-templates). Slugs must be unique **within the same parent route**. Unlike blog
+Guardrails: the page's **full resolved URL** (parent route slug + page slug)
+is validated in Studio against every hand-built path — top-level ones like
+`/talent` and `/contact` as well as nested ones like `/platform/partners` —
+and the parent routes `blog`, `case-studies`, `help`, and `studio` are
+rejected outright (those namespaces belong to other templates). The reserved
+lists live in `lib/reservedPaths.ts`, shared by the Studio validation and the
+build-time backstop filter — **add new hand-built pages there**. Slugs must be
+unique **within the same parent route**. Unlike blog
 posts and case studies, having **zero** published Pages is fine — the route
 emits a hidden placeholder that renders 404 content, so the build stays green.
 

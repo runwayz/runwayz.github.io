@@ -7,6 +7,7 @@ import { PageTemplate } from "@/components/PageTemplate";
 import { Body } from "@/components/PortableTextRenderer";
 import { ProtectedPage } from "@/components/ProtectedPage";
 import { sealPagePayload } from "@/lib/pageCrypto";
+import { STATIC_PATHS, OWNED_NAMESPACES } from "@/lib/reservedPaths";
 import type { SanityImageSource } from "@sanity/image-url";
 
 // Static export: pre-render one page per published "page" document at build
@@ -14,32 +15,12 @@ import type { SanityImageSource } from "@sanity/image-url";
 // a rebuild.
 export const dynamicParams = false;
 
-// Paths and namespaces owned by hand-built routes. Schema validation blocks
-// editors from picking these; this filter is the backstop that keeps a bad
-// document from colliding with a real route in the static export.
-const STATIC_PATHS = new Set([
-  "associations",
-  "blog",
-  "case-studies",
-  "contact",
-  "education",
-  "employers",
-  "help",
-  "platform",
-  "privacy",
-  "studio",
-  "style-guide",
-  "talent",
-  "terms",
-  "unions",
-  "unions-associations",
-  "workforce-boards",
-  "platform/partners",
-  "platform/talent",
-  "help/talent",
-  "help/partners",
-]);
-const OWNED_NAMESPACES = new Set(["blog", "case-studies", "help", "studio"]);
+// Paths and namespaces owned by hand-built routes (lib/reservedPaths.ts,
+// shared with the Studio validation). Schema validation blocks editors from
+// picking these; this filter is the backstop that keeps a bad document from
+// colliding with a real route in the static export.
+const RESERVED_PATHS = new Set(STATIC_PATHS);
+const RESERVED_NAMESPACES = new Set(OWNED_NAMESPACES);
 
 type Page = {
   title: string;
@@ -64,7 +45,7 @@ export async function generateStaticParams() {
   const rows = await sanityFetch<{ slug: string; parent?: string | null }[]>(pageParamsQuery);
   const params = rows
     .map((r) => (r.parent ? [r.parent, r.slug] : [r.slug]))
-    .filter((segments) => !STATIC_PATHS.has(segments.join("/")) && !OWNED_NAMESPACES.has(segments[0]))
+    .filter((segments) => !RESERVED_PATHS.has(segments.join("/")) && !RESERVED_NAMESPACES.has(segments[0]))
     .map((segments) => ({ slug: segments }));
   // `output: export` fails the build when a dynamic route has zero params
   // ("missing generateStaticParams"). With no published pages yet, emit one
