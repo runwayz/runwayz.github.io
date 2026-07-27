@@ -73,6 +73,24 @@ export const helpArticleByAudienceSlugQuery = `*[_type == "helpArticle" && slug.
   "category": category->{title, "slug": slug.current, audience}
 }`
 
+// Standard marketing pages (type "page"). URL is /<parent route>/<slug>, or
+// /<slug> when no parent route is set — rendered by app/[...slug].
+export const pageParamsQuery = `*[_type == "page" && defined(slug.current)]{
+  "slug": slug.current,
+  "parent": parent->slug.current
+}`
+
+// $parent is "" for top-level pages (coalesce makes a missing parent match "").
+export const pageByPathQuery = `*[_type == "page" && slug.current == $slug && coalesce(parent->slug.current, "") == $parent][0]{
+  _id,
+  title,
+  eyebrow,
+  description,
+  heroImage,
+  body,
+  showClosingCta
+}`
+
 // All (audience, slug) pairs for generateStaticParams on /help/[audience]/[slug].
 export const helpArticleParamsQuery = `*[_type == "helpArticle" && defined(slug.current) && defined(category->audience)]{
   "slug": slug.current,

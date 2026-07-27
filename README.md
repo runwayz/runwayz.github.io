@@ -59,7 +59,7 @@ made private.)
 ```bash
 npx sanity login
 npx sanity init --env=.env.local      # NOTE: the value is required — bare `--env` errors on CLI v5
-npx sanity dataset import sanity/seed.ndjson production   # seed: 1 author, 1 post, 1 case study
+npx sanity dataset import sanity/seed.ndjson production   # seed: 1 author, 1 post, 1 case study, 6 routes
 ```
 
 ## Deploy the CMS (hosted Studio)
@@ -129,6 +129,33 @@ search box shows a "not available locally" note. To test it locally, run
 
 > The don't-empty-a-type rule applies here too: keep at least one published
 > **Help Article**, or the build fails.
+
+### Standard pages (CMS-managed marketing pages)
+
+Editors can create whole marketing pages in Studio using the site's standard
+page template (`components/PageTemplate.tsx`), rendered by `app/[...slug]`:
+
+- **Page** — the page itself: **Title (H1, required)**, **slug**,
+  **header text (eyebrow)**, **page description** (subheading + meta
+  description), optional **hero image**, a rich-text **body** (same editor as
+  blog posts: headings, images, pull quotes, HubSpot forms), and a toggle for
+  the closing CTA band.
+- **Route** — a URL parent segment for organizing pages. On a Page, the
+  **Parent route** field picks an existing route **or creates a new one
+  inline**. The URL becomes `/<route>/<slug>` (e.g. route `employers` + slug
+  `construction` → `/employers/construction/`). Leave it empty for a top-level
+  URL (`/<slug>`).
+
+Guardrails: top-level slugs that would shadow a hand-built page (e.g.
+`/talent`, `/contact`) are rejected in Studio, as are the parent routes
+`blog`, `case-studies`, `help`, and `studio` (those namespaces belong to other
+templates). Slugs must be unique **within the same parent route**. Unlike blog
+posts and case studies, having **zero** published Pages is fine — the route
+emits a hidden placeholder that renders 404 content, so the build stays green.
+
+`sanity/seed.ndjson` includes six starter routes matching the existing site
+sections (talent, employers, workforce-boards, unions-associations, education,
+platform); import it (or just create routes in Studio) to make them pickable.
 
 ## Deploy the site (GitHub Pages)
 
