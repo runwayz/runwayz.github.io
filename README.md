@@ -157,6 +157,21 @@ emits a hidden placeholder that renders 404 content, so the build stays green.
 (talent, employers, workforce-boards, unions-associations, education, platform)
 plus about; import it (or just create routes in Studio) to make them pickable.
 
+**Password protection.** Toggle **Password protect this page** on a Page and
+set a password. Because the site is a static export, the protection is done by
+**encrypting the page at build time** (AES-256-GCM, key derived from the
+password): the published files contain only ciphertext plus an unlock form, and
+the browser decrypts after the visitor enters the password. Notes:
+
+- The password is a plain field in the dataset, so **anyone with Studio access
+  can read it**. Fine for share-with-a-client pages; not for real secrets.
+- Changing the password or content takes effect on the **next rebuild**
+  (automatic on publish via the webhook).
+- Protected pages are excluded from search engines (`noindex`, and their title/
+  description stay out of the HTML). Site search never indexes standard pages.
+- The password is remembered per browser tab (sessionStorage), so a refresh
+  doesn't re-prompt.
+
 ## Deploy the site (GitHub Pages)
 
 The repo is `runwayz/runwayz.github.io`, so the site publishes to

@@ -88,7 +88,9 @@ export const pageByPathQuery = `*[_type == "page" && slug.current == $slug && co
   description,
   heroImage,
   body,
-  showClosingCta
+  showClosingCta,
+  protected,
+  password
 }`
 
 // All (audience, slug) pairs for generateStaticParams on /help/[audience]/[slug].

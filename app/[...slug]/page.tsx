@@ -5,6 +5,8 @@ import { pageByPathQuery, pageParamsQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { PageTemplate } from "@/components/PageTemplate";
 import { Body } from "@/components/PortableTextRenderer";
+import { ProtectedPage } from "@/components/ProtectedPage";
+import { sealPagePayload } from "@/lib/pageCrypto";
 import type { SanityImageSource } from "@sanity/image-url";
 
 // Static export: pre-render one page per published "page" document at build
@@ -46,6 +48,8 @@ type Page = {
   heroImage?: SanityImageSource;
   body?: unknown;
   showClosingCta?: boolean;
+  protected?: boolean;
+  password?: string;
 };
 
 // Splits the catch-all segments into (parent, slug). Pages are at most two
@@ -79,6 +83,8 @@ export async function generateMetadata({
   if (!path) return { title: "Runwayz" };
   const page = await sanityFetch<Page | null>(pageByPathQuery, path, null);
   if (!page) return { title: "Runwayz" };
+  // Protected pages keep their title and description out of the static HTML.
+  if (page.protected) return { title: "Protected page · Runwayz", robots: { index: false } };
   return { title: `${page.title} · Runwayz`, description: page.description };
 }
 
@@ -93,6 +99,27 @@ export default async function StandardPage({
 
   const page = await sanityFetch<Page | null>(pageByPathQuery, path, null);
   if (!page) notFound();
+
+  // Protected page: encrypt the whole payload at build time with the password
+  // from Sanity, and ship ONLY ciphertext plus the unlock form. Nothing from
+  // the page (not even the title) may be rendered here, or it would land in
+  // the static HTML and the RSC payload in plain text.
+  if (page.protected && page.password) {
+    const sealed = await sealPagePayload(
+      {
+        title: page.title,
+        eyebrow: page.eyebrow,
+        description: page.description,
+        heroImageUrl: page.heroImage
+          ? urlFor(page.heroImage).width(2400).fit("max").url()
+          : undefined,
+        body: page.body,
+        showClosingCta: page.showClosingCta !== false,
+      },
+      page.password,
+    );
+    return <ProtectedPage sealed={sealed} storageKey={[path.parent, path.slug].filter(Boolean).join("/")} />;
+  }
 
   return (
     <PageTemplate

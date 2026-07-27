@@ -107,6 +107,28 @@ export const page = defineType({
       initialValue: true,
       description: 'Renders the standard "See a Demo" band at the bottom of the page.',
     }),
+    defineField({
+      name: 'protected',
+      title: 'Password protect this page',
+      type: 'boolean',
+      initialValue: false,
+      description:
+        'Visitors must enter a password to view the page. The content is encrypted in the published site, not just hidden.',
+    }),
+    defineField({
+      name: 'password',
+      type: 'string',
+      hidden: ({ document }) => !document?.protected,
+      description:
+        'The password visitors enter. Anyone with Studio access can read it here. Changing it takes effect on the next site rebuild (automatic on publish).',
+      validation: (r) =>
+        r.custom((value, context) => {
+          if (context.document?.protected && !value) {
+            return 'A password is required when the page is protected.'
+          }
+          return true
+        }),
+    }),
   ],
   preview: {
     select: { title: 'title', slug: 'slug.current', parentSlug: 'parent.slug.current', media: 'heroImage' },
