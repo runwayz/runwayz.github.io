@@ -7,3 +7,4 @@
 {"_id":"route.unions-associations","_type":"route","title":"Unions & Associations","slug":{"_type":"slug","current":"unions-associations"}}
 {"_id":"route.education","_type":"route","title":"Education","slug":{"_type":"slug","current":"education"}}
 {"_id":"route.platform","_type":"route","title":"Platform","slug":{"_type":"slug","current":"platform"}}
+{"_id":"route.about","_type":"route","title":"About","slug":{"_type":"slug","current":"about"}}

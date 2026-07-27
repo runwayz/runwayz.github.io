@@ -153,9 +153,9 @@ templates). Slugs must be unique **within the same parent route**. Unlike blog
 posts and case studies, having **zero** published Pages is fine — the route
 emits a hidden placeholder that renders 404 content, so the build stays green.
 
-`sanity/seed.ndjson` includes six starter routes matching the existing site
-sections (talent, employers, workforce-boards, unions-associations, education,
-platform); import it (or just create routes in Studio) to make them pickable.
+`sanity/seed.ndjson` includes seven starter routes: the existing site sections
+(talent, employers, workforce-boards, unions-associations, education, platform)
+plus about; import it (or just create routes in Studio) to make them pickable.
 
 ## Deploy the site (GitHub Pages)
 
