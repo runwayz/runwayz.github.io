@@ -144,18 +144,41 @@ page template (`components/PageTemplate.tsx`), rendered by `app/[...slug]`:
   **Parent route** field picks an existing route **or creates a new one
   inline**. The URL becomes `/<route>/<slug>` (e.g. route `employers` + slug
   `construction` → `/employers/construction/`). Leave it empty for a top-level
-  URL (`/<slug>`).
+  URL (`/<slug>`). The hand-built site sections (talent, employers,
+  workforce-boards, unions-associations, education, platform) exist as
+  **built-in routes**: editors can nest pages under them but cannot edit or
+  delete them (they are owned by code — see `lib/builtInRoutes.ts`; add an
+  entry there plus a seed line when a new section ships).
 
-Guardrails: top-level slugs that would shadow a hand-built page (e.g.
-`/talent`, `/contact`) are rejected in Studio, as are the parent routes
-`blog`, `case-studies`, `help`, and `studio` (those namespaces belong to other
-templates). Slugs must be unique **within the same parent route**. Unlike blog
+Guardrails: the page's **full resolved URL** (parent route slug + page slug)
+is validated in Studio against every hand-built path — top-level ones like
+`/talent` and `/contact` as well as nested ones like `/platform/partners` —
+and the parent routes `blog`, `case-studies`, `help`, and `studio` are
+rejected outright (those namespaces belong to other templates). The reserved
+lists live in `lib/reservedPaths.ts`, shared by the Studio validation and the
+build-time backstop filter — **add new hand-built pages there**. Slugs must be
+unique **within the same parent route**. Unlike blog
 posts and case studies, having **zero** published Pages is fine — the route
 emits a hidden placeholder that renders 404 content, so the build stays green.
 
-`sanity/seed.ndjson` includes six starter routes matching the existing site
-sections (talent, employers, workforce-boards, unions-associations, education,
-platform); import it (or just create routes in Studio) to make them pickable.
+`sanity/seed.ndjson` includes seven starter routes: the existing site sections
+(talent, employers, workforce-boards, unions-associations, education, platform)
+plus about; import it (or just create routes in Studio) to make them pickable.
+
+**Password protection.** Toggle **Password protect this page** on a Page and
+set a password. Because the site is a static export, the protection is done by
+**encrypting the page at build time** (AES-256-GCM, key derived from the
+password): the published files contain only ciphertext plus an unlock form, and
+the browser decrypts after the visitor enters the password. Notes:
+
+- The password is a plain field in the dataset, so **anyone with Studio access
+  can read it**. Fine for share-with-a-client pages; not for real secrets.
+- Changing the password or content takes effect on the **next rebuild**
+  (automatic on publish via the webhook).
+- Protected pages are excluded from search engines (`noindex`, and their title/
+  description stay out of the HTML). Site search never indexes standard pages.
+- The password is remembered per browser tab (sessionStorage), so a refresh
+  doesn't re-prompt.
 
 ## Deploy the site (GitHub Pages)
 
