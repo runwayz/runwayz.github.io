@@ -88,6 +88,7 @@ export const pageByPathQuery = `*[_type == "page" && slug.current == $slug && co
   description,
   heroImage,
   body,
+  sections,
   showClosingCta,
   protected,
   password

@@ -95,6 +95,23 @@ export const page = defineType({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      description: 'Flowing article-style content. Rendered above the sections.',
+    }),
+    defineField({
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      description:
+        'Designed full-width page sections. Add, reorder, and mix blocks; layout and styling are fixed by the design system.',
+      of: [
+        { type: 'sectionRichText' },
+        { type: 'sectionSplit' },
+        { type: 'sectionFeatureGrid' },
+        { type: 'sectionStatBand' },
+        { type: 'sectionLogoWall' },
+        { type: 'sectionQuote' },
+        { type: 'sectionCtaBand' },
+      ],
     }),
     defineField({
       name: 'showClosingCta',

@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { PageTemplate } from "@/components/PageTemplate";
 import { Body } from "@/components/PortableTextRenderer";
+import { Sections } from "@/components/SectionRenderer";
 import {
   openPagePayload,
   type ProtectedPagePayload,
@@ -66,6 +67,7 @@ export function ProtectedPage({ sealed, storageKey }: ProtectedPageProps) {
             <Body value={page.body} />
           </section>
         ) : null}
+        <Sections value={page.sections} />
       </PageTemplate>
     );
   }

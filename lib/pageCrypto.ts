@@ -11,6 +11,7 @@ export type ProtectedPagePayload = {
   description?: string
   heroImageUrl?: string
   body?: unknown
+  sections?: unknown
   showClosingCta?: boolean
 }
 
