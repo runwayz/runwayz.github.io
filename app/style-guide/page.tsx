@@ -368,6 +368,40 @@ export default function StyleGuidePage() {
           ))}
         </div>
       </Section>
+
+      <Section
+        n="08"
+        title="CMS body blocks"
+        desc="The exact set of blocks editors can insert in any rich-text body (blog posts, case studies, help articles, standard pages). Defined in sanity/schemas/blockContent.ts, rendered by components/PortableTextRenderer.tsx — both must change together."
+      >
+        <ul className="max-w-3xl space-y-3 text-fg2">
+          <li>
+            <strong className="text-fg1">Text</strong> — paragraphs with bold / italic /
+            underline and links; headings H2, H3, H4 (H1 is reserved for the page title);
+            quote style; bullet and numbered lists.
+          </li>
+          <li>
+            <strong className="text-fg1">Image</strong> — full column width, rounded corners,
+            with alt text and an optional caption.
+          </li>
+          <li>
+            <strong className="text-fg1">Pull Quote</strong> — large bordered quote with
+            attribution, for editorial emphasis.
+          </li>
+          <li>
+            <strong className="text-fg1">Columns</strong> — 2 or 3 side-by-side columns of any
+            body content; stacks vertically on mobile.
+          </li>
+          <li>
+            <strong className="text-fg1">Video</strong> — paste a YouTube or Vimeo URL for a
+            responsive 16:9 embed with an optional caption.
+          </li>
+          <li>
+            <strong className="text-fg1">HubSpot Form</strong> — inline marketing form by form
+            ID.
+          </li>
+        </ul>
+      </Section>
     </div>
   );
 }
