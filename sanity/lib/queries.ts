@@ -19,6 +19,7 @@ export const blogPostBySlugQuery = `*[_type == "blogPost" && slug.current == $sl
   publishedAt,
   coverImage,
   body,
+  sections,
   "author": author->{name, image, bio}
 }`
 
@@ -42,7 +43,8 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   summary,
   logo,
   metrics,
-  body
+  body,
+  sections
 }`
 
 export const caseStudySlugsQuery = `*[_type == "caseStudy" && defined(slug.current)]{ "slug": slug.current }`

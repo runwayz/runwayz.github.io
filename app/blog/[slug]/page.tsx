@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/client";
 import { blogPostBySlugQuery, blogSlugsQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { Body } from "@/components/PortableTextRenderer";
+import { Sections } from "@/components/SectionRenderer";
 import type { SanityImageSource } from "@sanity/image-url";
 
 // Static export: pre-render one page per known slug at build time; unknown
@@ -16,6 +17,7 @@ type Post = {
   publishedAt?: string;
   coverImage?: SanityImageSource;
   body?: unknown;
+  sections?: unknown;
   author?: { name?: string };
 };
 
@@ -36,7 +38,8 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-2xl">
+    <div>
+      <article className="mx-auto max-w-2xl">
       <p className="text-xs uppercase tracking-wide text-fg3">
         {post.author?.name ? `${post.author.name} · ` : ""}
         {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString() : ""}
@@ -53,9 +56,13 @@ export default async function BlogPostPage({
         />
       )}
 
-      <div className="mt-8">
-        <Body value={post.body} />
-      </div>
-    </article>
+        <div className="mt-8">
+          <Body value={post.body} />
+        </div>
+      </article>
+
+      {/* Sections break out of the reading column to full content width. */}
+      <Sections value={post.sections} />
+    </div>
   );
 }

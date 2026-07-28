@@ -406,7 +406,7 @@ export default function StyleGuidePage() {
       <Section
         n="09"
         title="Page sections"
-        desc="The page-builder blocks for the Sections field on CMS standard pages. Editors add, fill, and reorder; layout and styling are fixed in components/SectionRenderer.tsx. Defined in sanity/schemas/sections.ts — schema, renderer, and this list must change together."
+        desc="The page-builder blocks for the Sections field on CMS standard pages, blog posts, and case studies (rendered full-width below the article body on the latter two). Editors add, fill, and reorder; layout and styling are fixed in components/SectionRenderer.tsx. Defined in sanity/schemas/sections.ts — schema, renderer, and this list must change together."
       >
         <ul className="max-w-3xl space-y-3 text-fg2">
           <li>
