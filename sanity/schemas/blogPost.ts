@@ -41,6 +41,22 @@ export const blogPost = defineType({
       type: 'blockContent',
       validation: (r) => r.required(),
     }),
+    defineField({
+      name: 'sections',
+      title: 'Sections',
+      type: 'array',
+      description:
+        'Optional designed full-width sections rendered below the article body.',
+      of: [
+        { type: 'sectionRichText' },
+        { type: 'sectionSplit' },
+        { type: 'sectionFeatureGrid' },
+        { type: 'sectionStatBand' },
+        { type: 'sectionLogoWall' },
+        { type: 'sectionQuote' },
+        { type: 'sectionCtaBand' },
+      ],
+    }),
   ],
   preview: {
     select: { title: 'title', subtitle: 'publishedAt', media: 'coverImage' },

@@ -3,6 +3,7 @@ import { sanityFetch } from "@/sanity/lib/client";
 import { caseStudyBySlugQuery, caseStudySlugsQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { Body } from "@/components/PortableTextRenderer";
+import { Sections } from "@/components/SectionRenderer";
 import type { SanityImageSource } from "@sanity/image-url";
 
 // Static export: pre-render one page per known slug at build time; unknown
@@ -17,6 +18,7 @@ type CaseStudy = {
   logo?: SanityImageSource;
   metrics?: { value: string; label: string }[];
   body?: unknown;
+  sections?: unknown;
 };
 
 export async function generateStaticParams() {
@@ -64,6 +66,9 @@ export default async function CaseStudyPage({
       <div className="mx-auto mt-10 max-w-2xl">
         <Body value={study.body} />
       </div>
+
+      {/* Sections break out of the reading column to full content width. */}
+      <Sections value={study.sections} />
     </article>
   );
 }
