@@ -6,6 +6,7 @@ import { helpCategory } from './helpCategory'
 import { helpArticle } from './helpArticle'
 import { page } from './page'
 import { route } from './route'
+import { sectionTypes } from './sections'
 
 // Registered on the Studio config. Add a new content type here to make it
 // available in the CMS.
@@ -18,4 +19,5 @@ export const schemaTypes = [
   helpArticle,
   author,
   blockContent,
+  ...sectionTypes,
 ]

@@ -402,6 +402,43 @@ export default function StyleGuidePage() {
           </li>
         </ul>
       </Section>
+
+      <Section
+        n="09"
+        title="Page sections"
+        desc="The page-builder blocks for the Sections field on CMS standard pages. Editors add, fill, and reorder; layout and styling are fixed in components/SectionRenderer.tsx. Defined in sanity/schemas/sections.ts — schema, renderer, and this list must change together."
+      >
+        <ul className="max-w-3xl space-y-3 text-fg2">
+          <li>
+            <strong className="text-fg1">Rich Text</strong> — a standard content section:
+            optional eyebrow + H2, then body copy capped at 3xl width.
+          </li>
+          <li>
+            <strong className="text-fg1">Split (text + media)</strong> — text beside an image,
+            image left or right, stacking on mobile.
+          </li>
+          <li>
+            <strong className="text-fg1">Feature Grid</strong> — 2 or 3 columns of surface
+            cards, each with a title, short body, and optional image.
+          </li>
+          <li>
+            <strong className="text-fg1">Stat Band</strong> — up to 4 stat cards with an
+            accent value and label.
+          </li>
+          <li>
+            <strong className="text-fg1">Logo Wall</strong> — a row of logos at uniform
+            height, wrapping as needed.
+          </li>
+          <li>
+            <strong className="text-fg1">Quote</strong> — a standalone large quote with
+            attribution.
+          </li>
+          <li>
+            <strong className="text-fg1">CTA Band</strong> — heading, optional body, and a
+            centered accent button (CTA centering rule).
+          </li>
+        </ul>
+      </Section>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { pageByPathQuery, pageParamsQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { PageTemplate } from "@/components/PageTemplate";
 import { Body } from "@/components/PortableTextRenderer";
+import { Sections } from "@/components/SectionRenderer";
 import { ProtectedPage } from "@/components/ProtectedPage";
 import { sealPagePayload } from "@/lib/pageCrypto";
 import { STATIC_PATHS, OWNED_NAMESPACES } from "@/lib/reservedPaths";
@@ -28,6 +29,7 @@ type Page = {
   description?: string;
   heroImage?: SanityImageSource;
   body?: unknown;
+  sections?: unknown;
   showClosingCta?: boolean;
   protected?: boolean;
   password?: string;
@@ -95,6 +97,7 @@ export default async function StandardPage({
           ? urlFor(page.heroImage).width(2400).fit("max").url()
           : undefined,
         body: page.body,
+        sections: page.sections,
         showClosingCta: page.showClosingCta !== false,
       },
       page.password,
@@ -116,6 +119,7 @@ export default async function StandardPage({
           <Body value={page.body} />
         </section>
       ) : null}
+      <Sections value={page.sections} />
     </PageTemplate>
   );
 }
