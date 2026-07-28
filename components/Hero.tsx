@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 type Scrim = "none" | "dark" | "warm";
+type HeroSize = "default" | "compact";
 
 type HeroProps = {
   eyebrow: string;
@@ -12,6 +13,9 @@ type HeroProps = {
   image?: string;
   /** Legibility scrim over the image (image heroes only). */
   scrim?: Scrim;
+  /** Image-hero height. "compact" halves the default; used by CMS standard
+      pages. Text-only heroes are unaffected. */
+  size?: HeroSize;
 };
 
 // Scrims strengthen on lg+ (where the copy sits directly over the image; below
@@ -22,9 +26,15 @@ const SCRIM: Record<Scrim, string> = {
   warm: "bg-gradient-to-r from-[#e17248]/55 via-[#e17248]/15 to-transparent lg:from-[#e17248]/70 lg:via-[#e17248]/25",
 };
 
+// Image-hero heights per size variant. "compact" is ~50% of default.
+const HEIGHT: Record<HeroSize, string> = {
+  default: "min-h-[520px] pb-28 pt-12 sm:min-h-[860px] sm:pt-20",
+  compact: "min-h-[260px] pb-16 pt-12 sm:min-h-[430px] sm:pt-16",
+};
+
 // Shared hero for every top-level page. One source of truth for text widths,
 // spacing, heights, and the full-bleed image treatment so heroes stay identical.
-export function Hero({ eyebrow, title, subtitle, children, image, scrim = "none" }: HeroProps) {
+export function Hero({ eyebrow, title, subtitle, children, image, scrim = "none", size = "default" }: HeroProps) {
   // Text-only hero (no background image).
   if (!image) {
     return (
@@ -48,7 +58,7 @@ export function Hero({ eyebrow, title, subtitle, children, image, scrim = "none"
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-1/2 bg-gradient-to-b from-page/0 to-page"
       />
-      <div className="relative z-[2] mx-auto min-h-[520px] w-full max-w-6xl px-6 pb-28 pt-12 sm:min-h-[860px] sm:pt-20">
+      <div className={`relative z-[2] mx-auto w-full max-w-6xl px-6 ${HEIGHT[size]}`}>
         <div className="max-w-3xl [text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
           <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F5ECD7]/90">
             {eyebrow}

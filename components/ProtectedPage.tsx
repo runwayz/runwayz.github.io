@@ -60,6 +60,7 @@ export function ProtectedPage({ sealed, storageKey }: ProtectedPageProps) {
         subtitle={page.description ?? ""}
         image={page.heroImageUrl}
         scrim={page.heroImageUrl ? "dark" : undefined}
+        heroSize="compact"
         closingCta={page.showClosingCta !== false}
       >
         {page.body ? (

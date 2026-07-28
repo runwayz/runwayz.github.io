@@ -112,6 +112,7 @@ export default async function StandardPage({
       subtitle={page.description ?? ""}
       image={page.heroImage ? urlFor(page.heroImage).width(2400).fit("max").url() : undefined}
       scrim={page.heroImage ? "dark" : undefined}
+      heroSize="compact"
       closingCta={page.showClosingCta !== false}
     >
       {page.body ? (

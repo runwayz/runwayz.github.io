@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { ServeCTA } from "@/components/ServeCTA";
 
 type Scrim = "none" | "dark" | "warm";
+type HeroSize = "default" | "compact";
 
 type PageTemplateProps = {
   eyebrow: string;
@@ -13,6 +14,8 @@ type PageTemplateProps = {
   /** Optional hero background image. Omit for a text hero. */
   image?: string;
   scrim?: Scrim;
+  /** Image-hero height; CMS pages pass "compact" (half height). */
+  heroSize?: HeroSize;
   /** Content blocks rendered between the hero and the closing CTA. */
   children: ReactNode;
   /** Render the standard closing CTA band. Default true; pass false for pages
@@ -31,12 +34,13 @@ export function PageTemplate({
   heroCta,
   image,
   scrim,
+  heroSize,
   children,
   closingCta = true,
 }: PageTemplateProps) {
   return (
     <div>
-      <Hero eyebrow={eyebrow} title={title} subtitle={subtitle} image={image} scrim={scrim}>
+      <Hero eyebrow={eyebrow} title={title} subtitle={subtitle} image={image} scrim={scrim} size={heroSize}>
         {heroCta}
       </Hero>
       {children}
